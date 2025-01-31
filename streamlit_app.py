@@ -1,8 +1,13 @@
-import matplotlib.pyplot as plt
+import streamlit as st
+import pandas as pd
 import numpy as np
 
-arr = np.random.normal(1, 1, size=100)
-fig, ax = plt.subplots()
-ax.hist(arr, bins=20)
+# サンプルデータを生成
+data = pd.DataFrame({
+    '日付': pd.date_range(start='2023-01-01', end='2023-01-10'),
+    '値': np.random.randint(1, 100, size=10)
+})
 
-fig
+# 折れ線グラフをプロット
+st.write('折れ線グラフ:')
+st.line_chart(data.set_index('日付'))
