@@ -1,6 +1,12 @@
-import plotly.express as px
+import streamlit as st
 
-fig = px.imshow([[1, 20, 30],
-                 [20, 1, 60],
-                 [30, 60, 1]])
-fig.show()
+def show_heatmap(df):
+    """
+    各特徴の相関ヒートマップをみる
+    """
+    fig, ax = plt.subplots(figsize=(10,10))
+    sns.heatmap(df.corr(), annot=True, ax=ax)
+    st.pyplot(fig)
+
+st.write('特徴ごとの相関のHeatMap表示')
+show_heatmap(df)
