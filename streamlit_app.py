@@ -1,21 +1,8 @@
-import streamlit as st
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-
-# 選択オプション
-option = st.selectbox(
-    "表示する内容を選んでください",
-    ("テキスト", "画像", "データフレーム")
-)
-
-# 動的にコンテンツを表示
-if option == "テキスト":
-    st.write("これはテキストです。")
-elif option == "画像":
-    st.image("https://example.com/sample.jpg")
-elif option == "データフレーム":
-    import pandas as pd
-    df = pd.DataFrame({
-        "列1": [1, 2, 3],
-        "列2": ["A", "B", "C"]
-    })
-    st.write(df)
+df = pd.DataFrame({'A': range(5),
+                   'B': [x**2 for x in range(5)],
+                   'C': [x**3 for x in range(5)]})
