@@ -1,34 +1,39 @@
-import pandas as pd
 import streamlit as st
- 
-st.title('Hello, Streamlit!')
- 
-df = pd.DataFrame(
-    [
-        {"Sales quantity": "29,82,55,77,43,43,79,49,36,38,35,36,40,17,49,17,41,77,82,31,25,65,75,89,26", "compared to previous year": "0.55921745316719,0.9714691340818024,0.6734865039264561,0.33394622351153125,0.5028502211475531,0.7617577465475921,0.77286463740065,0.033682679655736014,0.6322795679701955,0.8760484895547053,0.0013691360753895765,0.9821578838118802,0.140954801174501,0.7071256599980984,0.9264423841909245,0.3185370631226976,0.9918933376848775,0.8174032338567488,0.09635411006621841,0.49069727888767223,0.6338474730494819,0.2341927475220612,0.30872646565279116,0.3049823957257939,0.5744113520919163", "is_inventory": True},
-        {"Sales quantity": "48,40,29,65,51,76,84,13,54,42,32,82,87,48,58,12,32,23,35,59,81,14,32,23,55", "compared to previous year": "0.01379496881603992,0.9304456267138574,0.5649452520585204,0.743217519503495,0.5244815927017313,0.3769253733048501,0.7889156501012278,0.14654922470745202,0.4618327333075182,0.9563426325645549,0.56168432041344,0.9475055660537064,0.8438223825838812,0.688508906214851,0.06135382730127392,0.22714965316639468,0.5825974535494179,0.9755924493416012,0.7534887059682834,0.986447984406746,0.6995666254050656,0.6427208462549219,0.472087864664831,0.343398064256479,0.0748765861611943", "is_inventory": False},
-        {"Sales quantity": "10,45,59,40,58,71,84,35,28,14,48,54,44,59,73,76,76,68,11,27,32,79,76,88,81", "compared to previous year": "0.7586255927339749,0.45828170652710165,0.38158110883616747,0.915196136270585,0.1959385244077817,0.19832388673897738,0.9760755463739904,0.9002133695121806,0.6216429618172397,0.436692159739706,0.7764328119584399,0.9594371929225926,0.7342877731415655,0.7393656256414073,0.6818084670253696,0.5816767140656959,0.06212698311195286,0.04144959966830952,0.526301682845678,0.5046874024090726,0.3831375575326377,0.32103853715766195,0.22205068697471575,0.982498257713865,0.010069610690874198", "is_inventory": True},
-    ]
-)
-edited_df = st.data_editor(
-    df,
-    column_config={
-        "Sales quantity": st.column_config.BarChartColumn(
-            "Sales (last 25 days)",
-            help="The sales volume in the last 25 days",
-            y_min=0,
-            y_max=100),
-        "compared to previous year": st.column_config.AreaChartColumn(
-            "compared to previous year",
-            width="medium",
-            y_min=0,
-            y_max=1,),
-        "is_inventory": st.column_config.CheckboxColumn(
-            "Is it in stock?",
-            default=False,
-        ),
-    },
-    disabled=["Sales quantity","compared"],
-    hide_index=True,
-    use_container_width=True
-)
+import july
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import pandas as pd
+
+url = 'https://docs.google.com/spreadsheets/'
+
+# Set up API credentials and open the worksheet
+scope = ['https://spreadsheets.google.com/feeds',
+         'https://www.googleapis.com/auth/drive']
+credentials = ServiceAccountCredentials.from_json_keyfile_name(
+    'cred.json', scope)
+gc = gspread.authorize(credentials)
+workbook = gc.open_by_url(url)
+worksheet = workbook.worksheet('Sheet1')
+
+data = worksheet.get_all_values()
+headers = data.pop(0)
+
+df = pd.DataFrame(data, columns=headers)
+
+df['Dates'] = pd.to_datetime(df.Dates)
+df['Dates'] = df['Dates'].dt.strftime('%Y-%m-%d')
+
+july.heatmap(dates=df.Dates,
+                       data=df.Pages,
+                       cmap='github',
+                       month_grid=True,
+                       horizontal=True,
+                       value_label=True,
+                       date_label=False,
+                       weekday_label=True,
+                       month_label=True,
+                       year_label=True,
+                       colorbar=True,
+                       fontfamily="monospace",
+                       fontsize=12,
+                       title="Daily Pages Read")
