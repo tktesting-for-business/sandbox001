@@ -1,15 +1,20 @@
 import streamlit as st
 
-col1, col2, col3 = st.columns(3)
+# 選択オプション
+option = st.selectbox(
+    "表示する内容を選んでください",
+    ("テキスト", "画像", "データフレーム")
+)
 
-with col1:
-    st.header("A cat")
-    st.image("https://static.streamlit.io/examples/cat.jpg")
-
-with col2:
-    st.header("A dog")
-    st.image("https://static.streamlit.io/examples/dog.jpg")
-
-with col3:
-    st.header("An owl")
-    st.image("https://static.streamlit.io/examples/owl.jpg")
+# 動的にコンテンツを表示
+if option == "テキスト":
+    st.write("これはテキストです。")
+elif option == "画像":
+    st.image("https://example.com/sample.jpg")
+elif option == "データフレーム":
+    import pandas as pd
+    df = pd.DataFrame({
+        "列1": [1, 2, 3],
+        "列2": ["A", "B", "C"]
+    })
+    st.write(df)
