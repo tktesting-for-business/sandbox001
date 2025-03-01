@@ -8,8 +8,9 @@ from markitdown import MarkItDown
 
 md = MarkItDown()
 result = md.convert("challenge_dh7th_en.pdf")
-html_text = convert_cid_string(result.text_content, "unicode_literal")
-st.write(html_text)
+#html_text = convert_cid_string(result.text_content, "unicode_literal")
+#st.write(html_text)
+st.write(result.text_content)
 
 ########################################################
 
