@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from markitdown import MarkItDown
 
 md = MarkItDown()
-result = md.convert("https://www.daiwahouse.co.jp/about/release/house/pdf/FY2024_3Q.pdf")
+result = md.convert("BSC.pdf")
 st.writh(result.text_content)
 
 df = pd.DataFrame({'A': range(5),
