@@ -21,17 +21,15 @@ def extract_text_from_pdf(pdf_path):
     return text
 
 ########################################################
-pdf_file = "your_pdf_file.pdf"  # 抽出したいPDFファイル名
-extracted_text = extract_text_from_pdf("challenge_dh7th_en.pdf")
-st.write(extracted_text)
+#pdf_file = "your_pdf_file.pdf"  # 抽出したいPDFファイル名
+#extracted_text = extract_text_from_pdf("challenge_dh7th_en.pdf")
+#st.write(extracted_text)
 
 ########################################################
 from markitdown import MarkItDown
 md = MarkItDown()
-#result = md.convert("FY2024_3Q.pdf")
-#html_text = convert_cid_string(result.text_content, "html_entity")
-#st.write(html_text)
-#st.write(result.text_content)
+result = md.convert("challenge_dh7th_en.pdf")
+st.write(result.text_content)
 ########################################################
 
 
