@@ -2,4 +2,4 @@ matplotlib
 Seaborn
 markitdown
 pdfplumber
-convert_from_path
+pdf2image
