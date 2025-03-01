@@ -4,16 +4,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-from markitdown import MarkItDown
-
-md = MarkItDown()
-result = md.convert("FY2024_3Q.pdf")
-#html_text = convert_cid_string(result.text_content, "unicode_literal")
-#st.write(html_text)
-st.write(result.text_content)
-
 ########################################################
-
 import re
 from urllib.parse import quote
 
@@ -141,6 +132,13 @@ if __name__ == "__main__":
     with open("output.html", "w", encoding="utf-8") as f:
         f.write(html_output)
     print("Converted HTML saved to output.html")
+########################################################
+from markitdown import MarkItDown
+md = MarkItDown()
+result = md.convert("FY2024_3Q.pdf")
+html_text = convert_cid_string(result.text_content, "unicode_literal")
+st.write(html_text)
+#st.write(result.text_content)
 ########################################################
 
 
