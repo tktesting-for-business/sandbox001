@@ -5,31 +5,27 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 ########################################################
-from pdfminer.high_level import extract_text
+# pdfplumberライブラリをインポート
+import pdfplumber
 
-def extract_text_from_pdf(pdf_path):
-    """
-    PDFファイルからテキストを抽出する (ToUnicode CMapを自動的に利用)。
+# プログラム開始時にPDFファイルのパスを変数に指定
+pdf_file_path = "challenge_dh7th_en.pdf"  # ここにPDFファイルのパスを指定
 
-    Args:
-        pdf_path (str): PDFファイルへのパス。
-
-    Returns:
-        str: 抽出されたテキスト。
-    """
-    text = extract_text(pdf_path)
-    return text
-
-########################################################
-#pdf_file = "your_pdf_file.pdf"  # 抽出したいPDFファイル名
-#extracted_text = extract_text_from_pdf("challenge_dh7th_en.pdf")
-#st.write(extracted_text)
+# PDFファイルを開く
+with pdfplumber.open(pdf_file_path) as pdf:
+    # PDFの各ページに対して処理を行う
+    for page in pdf.pages:
+        # ページからテキストデータを抽出
+        text = page.extract_text()
+        
+        # 抽出したテキストデータを出力
+        st.write(text)
 
 ########################################################
 from markitdown import MarkItDown
 md = MarkItDown()
-result = md.convert("challenge_dh7th_en.pdf")
-st.write(result.text_content)
+#result = md.convert("challenge_dh7th_en.pdf")
+#st.write(result.text_content)
 ########################################################
 
 
