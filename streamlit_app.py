@@ -22,7 +22,7 @@ def extract_text_from_pdf(pdf_path):
 
 ########################################################
 pdf_file = "your_pdf_file.pdf"  # 抽出したいPDFファイル名
-extracted_text = extract_text_from_pdf("BSC.pdf")
+extracted_text = extract_text_from_pdf("challenge_dh7th_en.pdf")
 st.write(extracted_text)
 
 ########################################################
