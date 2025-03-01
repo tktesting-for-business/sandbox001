@@ -1,3 +1,4 @@
 matplotlib
 Seaborn
 markitdown
+pdfplumber
