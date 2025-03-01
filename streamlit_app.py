@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import pdfplumber
 
 # プログラム開始時にPDFファイルのパスを変数に指定
-pdf_file_path = "challenge_dh7th_en.pdf"  # ここにPDFファイルのパスを指定
+pdf_file_path = "FY2024_3Q.pdf"  # ここにPDFファイルのパスを指定
 
 # PDFファイルを開く
 with pdfplumber.open(pdf_file_path) as pdf:
