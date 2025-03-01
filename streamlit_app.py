@@ -136,7 +136,7 @@ if __name__ == "__main__":
 from markitdown import MarkItDown
 md = MarkItDown()
 result = md.convert("FY2024_3Q.pdf")
-html_text = convert_cid_string(result.text_content, "unicode_literal")
+html_text = convert_cid_string(result.text_content, "html_entity")
 st.write(html_text)
 #st.write(result.text_content)
 ########################################################
