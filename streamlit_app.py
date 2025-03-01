@@ -9,23 +9,23 @@ import matplotlib.pyplot as plt
 import pdfplumber
 
 # プログラム開始時にPDFファイルのパスを変数に指定
-pdf_file_path = "challenge_dh7th_en"  # ここにPDFファイルのパスを指定
+pdf_file_path = "FY2024_3Q_print.pdf"  # ここにPDFファイルのパスを指定
 
 # PDFファイルを開く
-#with pdfplumber.open(pdf_file_path) as pdf:
-#    # PDFの各ページに対して処理を行う
-#    for page in pdf.pages:
-#        # ページからテキストデータを抽出
-#        text = page.extract_text()
-#        
-#        # 抽出したテキストデータを出力
-#        st.write(text)
+with pdfplumber.open(pdf_file_path) as pdf:
+    # PDFの各ページに対して処理を行う
+    for page in pdf.pages:
+        # ページからテキストデータを抽出
+        text = page.extract_text()
+        
+        # 抽出したテキストデータを出力
+        st.write(text)
 
 ########################################################
 from markitdown import MarkItDown
 md = MarkItDown()
-result = md.convert("FY2024_3Q_print.pdf")
-st.write(result.text_content)
+#result = md.convert("FY2024_3Q_print.pdf")
+#st.write(result.text_content)
 ########################################################
 
 
