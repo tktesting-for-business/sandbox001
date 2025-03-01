@@ -8,7 +8,7 @@ from markitdown import MarkItDown
 
 md = MarkItDown()
 result = md.convert("BSC.pdf")
-st.writh(result.text_content)
+st.write(result.text_content)
 
 df = pd.DataFrame({'A': range(5),
                    'B': [x**2 for x in range(5)],
