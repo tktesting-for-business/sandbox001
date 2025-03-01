@@ -4,6 +4,12 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+from markitdown import MarkItDown
+
+md = MarkItDown()
+result = md.convert("https://www.daiwahouse.co.jp/about/release/house/pdf/FY2024_3Q.pdf")
+st.writh(result.text_content)
+
 df = pd.DataFrame({'A': range(5),
                    'B': [x**2 for x in range(5)],
                    'C': [x**3 for x in range(5)]})
