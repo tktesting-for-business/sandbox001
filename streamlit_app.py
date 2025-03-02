@@ -5,7 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # プログラム開始時にPDFファイルのパスを変数に指定
-pdf_file_path = "FY2024_3Q_print.pdf"  # ここにPDFファイルのパスを指定
+pdf_file_path = "BSC.pdf"  # ここにPDFファイルのパスを指定
 
 ########################################################
 from pdf2image import convert_from_path
