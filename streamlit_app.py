@@ -9,25 +9,55 @@ pdf_file_path = "FY2024_3Q_print.pdf"  # ここにPDFファイルのパスを指
 
 ########################################################
 from pdf2image import convert_from_path
-import pytesseract  # または easyocr
+import easyocr
+import io
+from PIL import Image
 
-# Tesseractの実行ファイルパス設定 (Windowsの場合)
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
-def pdf_to_text_ocr(pdf_path):
+def pdf_to_text_easyocr(pdf_path, use_gpu=False, languages=['ja', 'en']):
     """
-    PDFを画像に変換し、OCRでテキスト抽出 (pytesseract使用)。
-    """
-    all_text = ""
-    images = convert_from_path(pdf_path)  # PDFを画像(PIL Image)のリストに変換
-    for i, image in enumerate(images):
-        # 各ページをOCR
-        text = pytesseract.image_to_string(image, lang='jpn')
-        all_text += f"--- Page {i+1} ---\n" + text + "\n"
-    return all_text
+    PDFファイルを画像に変換し、EasyOCRを使って各ページからテキストを抽出する。
 
-extracted_text = pdf_to_text_ocr(pdf_file_path)
-st.write(extracted_text)
+    Args:
+        pdf_path (str): PDFファイルへのパス。
+        use_gpu (bool): EasyOCRでGPUを使用するかどうか (True/False)。
+        languages (list): EasyOCRで使用する言語のリスト (例: ['ja', 'en'])。
+
+    Returns:
+        str: 抽出されたテキスト (全ページ分、改行で連結)。
+    """
+
+    try:
+        # PDFをPIL Imageオブジェクトのリストに変換
+        images = convert_from_path(pdf_path)
+
+        # EasyOCRリーダーの初期化
+        reader = easyocr.Reader(languages, gpu=use_gpu)
+        #reader = easyocr.Reader(['en', 'ja'])
+
+        all_text = []
+        for i, image in enumerate(images):
+            # 各ページをEasyOCRで処理
+            print(f"Processing page {i+1}...")
+
+            # PIL ImageをEasyOCRに渡す
+            results = reader.readtext(image, paragraph=True)  #段落として結合
+
+            # 各ページの結果を結合
+            page_text = " ".join([result[1] for result in results])
+            all_text.append(page_text)
+
+
+
+        # 全ページのテキストを改行で結合
+        full_text = "\n\n".join(all_text)
+        return full_text
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return ""
+
+    extracted_text = pdf_to_text_easyocr(pdf_file_path, use_gpu=False) # GPU使わない場合
+    st.write(extracted_text)
 ########################################################
 # pdfplumberライブラリをインポート
 #import pdfplumber
