@@ -5,7 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # プログラム開始時にPDFファイルのパスを変数に指定
-pdf_file_path = "BSC.pdf"  # ここにPDFファイルのパスを指定
+pdf_file_path = "gazou.pdf"  # ここにPDFファイルのパスを指定
 
 
 ########################################################
