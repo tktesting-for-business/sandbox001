@@ -46,8 +46,6 @@ def pdf_to_text_easyocr(pdf_path, use_gpu=False, languages=['ja', 'en']):
             page_text = " ".join([result[1] for result in results])
             all_text.append(page_text)
 
-
-
         # 全ページのテキストを改行で結合
         full_text = "\n\n".join(all_text)
         return full_text
@@ -56,8 +54,8 @@ def pdf_to_text_easyocr(pdf_path, use_gpu=False, languages=['ja', 'en']):
         print(f"An error occurred: {e}")
         return ""
 
-    extracted_text = pdf_to_text_easyocr(pdf_file_path, use_gpu=False) # GPU使わない場合
-    st.write(extracted_text)
+extracted_text = pdf_to_text_easyocr(pdf_file_path, use_gpu=False) # GPU使わない場合
+st.write(extracted_text)
 ########################################################
 # pdfplumberライブラリをインポート
 #import pdfplumber
