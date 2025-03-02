@@ -3,4 +3,5 @@ Seaborn
 markitdown
 pdfplumber
 pdf2image
+pdfInfo
 easyocr
