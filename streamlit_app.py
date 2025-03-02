@@ -37,7 +37,7 @@ def pdf_to_text_easyocr(pdf_path, use_gpu=False, languages=['ja', 'en']):
         all_text = []
         for i, image in enumerate(images):
             # 各ページをEasyOCRで処理
-            print(f"Processing page {i+1}...")
+            st.write(f"Processing page {i+1}...")
 
             # PIL ImageをEasyOCRに渡す
             results = reader.readtext(image, paragraph=True)  #段落として結合
