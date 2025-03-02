@@ -27,10 +27,10 @@ def pdf_to_text_easyocr(pdf_path, use_gpu=False, languages=['ja', 'en']):
     """
 
     try:
+        st.write(pdf_path)
+
         # PDFをPIL Imageオブジェクトのリストに変換
         images = convert_from_path(pdf_path)
-
-        st.write(pdf_path)
         
         # EasyOCRリーダーの初期化
         reader = easyocr.Reader(languages, gpu=use_gpu)
