@@ -2,5 +2,6 @@ matplotlib
 Seaborn
 markitdown
 pdfplumber
+pdfinfo
 pdf2image
 pytesseract
