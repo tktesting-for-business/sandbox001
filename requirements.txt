@@ -4,4 +4,4 @@ markitdown
 pdfplumber
 pdfinfo
 pdf2image
-pytesseract
+easyocr
