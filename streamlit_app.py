@@ -20,7 +20,6 @@ with open("output.md", "w", encoding="utf-8") as f:
 #st.write(result.text_content)
 ########################################################
 
-
 df = pd.DataFrame({'A': range(5),
                    'B': [x**2 for x in range(5)],
                    'C': [x**3 for x in range(5)]})
