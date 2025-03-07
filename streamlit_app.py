@@ -9,9 +9,11 @@ import pymupdf4llm
 filename = "半期報告書（2025年3月期）.pdf"
 md_text = pymupdf4llm.to_markdown(filename)
 st.write(md_text)
-with open("output.md", "w", encoding="utf-8") as f:
-    f.write(md_text)
-  
+
+#with open("output.md", "w", encoding="utf-8") as f:
+#    f.write(md_text)
+#  
+
 ########################################################
 #from markitdown import MarkItDown
 #md = MarkItDown()
