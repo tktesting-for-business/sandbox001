@@ -14,7 +14,7 @@ st.write(md_text)
 #    f.write(md_text)
 #  
 
-with open("output.md", 'wb') as f:
+with open("output.md", "wb", encoding="utf-8") as f:
     f.write(md_text)
   
 ########################################################
