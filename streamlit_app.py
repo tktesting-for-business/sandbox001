@@ -7,33 +7,25 @@ import matplotlib.pyplot as plt
 import pymupdf4llm
 
 ########################################################
-st.markdown('# 画像を保存するデモ')
-file = st.file_uploader('画像をアップロードしてください.', type=['jpg', 'jpeg', 'png'])
-if file:
+IMG_PATH = "imgs"
+uploaded_file = st.file_uploader('Choose a file')
+if file is not None:
     st.markdown(f'{file.name} をアップロードしました.')
     img_path = os.path.join(IMG_PATH, file.name)
     # 画像を保存する
     with open(img_path, 'wb') as f:
-        f.write(file.read())
-        
+        f.write(file.read())        
+
     # 保存した画像を表示
     img = Image.open(img_path)
-    st.image(img)        
+    st.image(img)  
+else:
+    st.info('☝️ Upload a CSV file')
+
 ########################################################
-
-filename = "有価証券報告書（2024年3月期）.pdf"
-md_text = pymupdf4llm.to_markdown(filename)
-#st.write(md_text)
-st.code(md_text, language='python')
-
-#with open("output.md", "w", encoding="utf-8") as f:
-#    f.write(md_text)
-    
-#IMG_PATH = 'imgs'
-#img_path = os.path.join(IMG_PATH, "output.md")
-# 画像を保存する
-#with open(img_path, 'wb') as f:
-#    f.write(md_text)
+#filename = "有価証券報告書（2024年3月期）.pdf"
+#md_text = pymupdf4llm.to_markdown(filename)
+#st.code(md_text, language='python')
 
 ########################################################
 #from markitdown import MarkItDown
