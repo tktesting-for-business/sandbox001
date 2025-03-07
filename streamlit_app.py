@@ -9,12 +9,12 @@ import pymupdf4llm
 ########################################################
 IMG_PATH = "imgs"
 uploaded_file = st.file_uploader('Choose a file')
-if file is not None:
-    st.markdown(f'{file.name} をアップロードしました.')
-    img_path = os.path.join(IMG_PATH, file.name)
+if uploaded_file is not None:
+    st.markdown(f'{uploaded_file.name} をアップロードしました.')
+    img_path = os.path.join(IMG_PATH, uploaded_file.name)
     # 画像を保存する
     with open(img_path, 'wb') as f:
-        f.write(file.read())        
+        f.write(uploaded_file.read())        
 
     # 保存した画像を表示
     img = Image.open(img_path)
