@@ -14,6 +14,9 @@ st.write(md_text)
 #    f.write(md_text)
 #  
 
+with open("output.md", 'wb') as f:
+    f.write(md_text)
+  
 ########################################################
 #from markitdown import MarkItDown
 #md = MarkItDown()
