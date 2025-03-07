@@ -4,3 +4,4 @@ markitdown
 pdfplumber
 pdf2image
 easyocr
+pymupdf4llm
