@@ -17,11 +17,14 @@ if uploaded_file is not None:
         f.write(uploaded_file.read())        
 
     # 保存した画像を表示
-    st.write(img_path)
     #img = Image.open(img_path)
     #st.image(img)  
+
+    md_text = pymupdf4llm.to_markdown(uploaded_file)
+    st.code(md_text, language='python')
+
 else:
-    st.info('☝️ Upload a CSV file')
+    st.info('☝️ Upload a file')
 
 ########################################################
 #filename = "有価証券報告書（2024年3月期）.pdf"
