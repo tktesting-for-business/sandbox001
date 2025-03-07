@@ -7,12 +7,15 @@ import matplotlib.pyplot as plt
 import pymupdf4llm
 
 ########################################################
+IMG_PATH = 'imgs'
 #uploaded_file = "有価証券報告書（2024年3月期）.pdf"
 uploaded_file = st.file_uploader('Choose a PDF file')
 if uploaded_file is not None:
     st.markdown(f'{uploaded_file.name} をアップロードしました.')
+    img_path = os.path.join(IMG_PATH, file.name)
+    
     # 保存したPDFをmarkdown表示
-    md_text = pymupdf4llm.to_markdown(uploaded_file)
+    md_text = pymupdf4llm.to_markdown(img_path)
     st.code(md_text, language='python')
 else:
     st.info('☝️ Upload a file')
