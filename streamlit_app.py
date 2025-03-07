@@ -10,9 +10,14 @@ filename = "有価証券報告書（2024年3月期）.pdf"
 md_text = pymupdf4llm.to_markdown(filename)
 st.write(md_text)
 
-with open("output.md", "w", encoding="utf-8") as f:
+#with open("output.md", "w", encoding="utf-8") as f:
+#    f.write(md_text)
+    
+IMG_PATH = 'imgs'
+img_path = os.path.join(IMG_PATH, "output.md")
+# 画像を保存する
+with open(img_path, 'wb') as f:
     f.write(md_text)
- 
 ########################################################
 #from markitdown import MarkItDown
 #md = MarkItDown()
