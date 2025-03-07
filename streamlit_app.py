@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import pymupdf4llm
 
 ########################################################
-IMG_PATH = "imgs"
+IMG_PATH = "."
 uploaded_file = st.file_uploader('Choose a file')
 if uploaded_file is not None:
     st.markdown(f'{uploaded_file.name} をアップロードしました.')
