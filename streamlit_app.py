@@ -5,6 +5,11 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pymupdf4llm
 
+
+filename = "半期報告書（2025年3月期）.pdf"
+md_text = pymupdf4llm.to_markdown(filename)
+st.write(md_text)
+
 # プログラム開始時にPDFファイルのパスを変数に指定
 pdf_file_path = "gazou.pdf"  # ここにPDFファイルのパスを指定
 ########################################################
