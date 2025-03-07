@@ -11,15 +11,12 @@ IMG_PATH = "."
 uploaded_file = st.file_uploader('Choose a file')
 if uploaded_file is not None:
     st.markdown(f'{uploaded_file.name} をアップロードしました.')
-    img_path = os.path.join(IMG_PATH, uploaded_file.name)
+    #img_path = os.path.join(IMG_PATH, uploaded_file.name)
     # 画像を保存する
-    with open(img_path, 'wb') as f:
-        f.write(uploaded_file.read())        
+    #with open(img_path, 'wb') as f:
+    #    f.write(uploaded_file.read())        
 
-    # 保存した画像を表示
-    #img = Image.open(img_path)
-    #st.image(img)  
-
+    # 保存したPDFをmarkdown表示
     md_text = pymupdf4llm.to_markdown(uploaded_file)
     st.code(md_text, language='python')
 
