@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import pymupdf4llm
 
 ########################################################
-uploaded_file = "有価証券報告書（2022年3月期）.pdf"
+uploaded_file = "新中期経営計画.pdf"
 md_text = pymupdf4llm.to_markdown(uploaded_file)
 st.code(md_text, language='python')
 
