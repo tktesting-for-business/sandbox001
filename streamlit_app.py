@@ -15,8 +15,9 @@ if uploaded_file is not None:
     img_path = os.path.join(IMG_PATH, uploaded_file.name)
     
     # 保存したPDFをmarkdown表示
-    md_text = pymupdf4llm.to_markdown(img_path)
-    st.code(md_text, language='python')
+    st.write(img_path)
+    #md_text = pymupdf4llm.to_markdown(img_path)
+    #st.code(md_text, language='python')
 else:
     st.info('☝️ Upload a file')
 
