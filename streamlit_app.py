@@ -17,8 +17,9 @@ if uploaded_file is not None:
         f.write(uploaded_file.read())        
 
     # 保存した画像を表示
-    img = Image.open(img_path)
-    st.image(img)  
+    st.write(uploaded_file)
+    #img = Image.open(img_path)
+    #st.image(img)  
 else:
     st.info('☝️ Upload a CSV file')
 
