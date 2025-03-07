@@ -17,7 +17,7 @@ if uploaded_file is not None:
         f.write(uploaded_file.read())        
 
     # 保存した画像を表示
-    st.write(uploaded_file)
+    st.write(img_path)
     #img = Image.open(img_path)
     #st.image(img)  
 else:
