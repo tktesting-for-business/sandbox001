@@ -30,6 +30,7 @@ code = "1925"
 # 財務情報の取得
 statements = requests.get(f"https://api.jquants.com/v1/fins/statements?code={code}", headers=headers)
 statements.json()
+st.write("zaim")
 
 ########################################################
 #uploaded_file = "有価証券報告書（2022年3月期）.pdf"
