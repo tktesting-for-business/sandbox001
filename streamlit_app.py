@@ -15,14 +15,7 @@ REFRESH_TOKEN = "eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.
 r_post = requests.post(f"https://api.jquants.com/v1/token/auth_refresh?refreshtoken={REFRESH_TOKEN}")
 data = r_post.json()
 idToken = data["idToken"]
-
 headers = {'Authorization': 'Bearer {}'.format(idToken)}
-
-# 銘柄コード、期間を指定
-code_ = "19250" 
-from_ = "2024-12-01"
-to_ = "2025-01-01"
-
 
 # 銘柄コードを指定
 code = "1925" 
