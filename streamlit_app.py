@@ -32,7 +32,7 @@ statements = requests.get(f"https://api.jquants.com/v1/fins/statements?code={cod
 # pandasデータフレームに変換
 df_statements = pd.DataFrame(statements.json()["statements"])
 
-st.write("銘柄コード：" & code)
+st.write("銘柄コード：" + code)
 st.write(df_statements)
 
 ########################################################
