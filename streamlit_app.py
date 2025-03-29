@@ -31,6 +31,8 @@ code = "1925"
 statements = requests.get(f"https://api.jquants.com/v1/fins/statements?code={code}", headers=headers)
 # pandasデータフレームに変換
 df_statements = pd.DataFrame(statements.json()["statements"])
+
+st.write("銘柄コード：" & code)
 st.write(df_statements)
 
 ########################################################
