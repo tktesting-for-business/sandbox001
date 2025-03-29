@@ -29,7 +29,7 @@ code = "1925"
 
 # 財務情報の取得
 statements = requests.get(f"https://api.jquants.com/v1/fins/statements?code={code}", headers=headers)
-statements.json()
+st.write(statements.json())
 st.write("zaim")
 
 ########################################################
