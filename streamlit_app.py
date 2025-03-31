@@ -6,6 +6,40 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pymupdf4llm
 
+
+
+import yfinance as yf
+
+#Tikerで一つの銘柄の情報を取得　例は アップル。2024/8/17時点
+STOCK = yf.Ticker("AAPL") 
+
+# 情報取得(.info)
+STOCK_info = STOCK.info
+
+# シンボル
+st.write(f"{STOCK_info['underlyingSymbol']=}")
+# STOCK_info['underlyingSymbol']='AAPL'
+
+# 会社名
+st.write(f"{STOCK_info['shortName']=}")
+# STOCK_info['shortName']='Apple Inc.'
+
+st.write(f"{STOCK_info['longName']=}")
+# STOCK_info['longName']='Apple Inc.'
+
+# 現在値
+st.write(f"{STOCK_info['currentPrice']=}ドル")
+# STOCK_info['currentPrice']=226.05ドル
+
+# 52週最高値
+st.write(f"{STOCK_info['fiftyTwoWeekLow']=}ドル")
+# STOCK_info['fiftyTwoWeekLow']=164.08ドル
+
+# 52週最低値
+st.write(f"{STOCK_info['fiftyTwoWeekHigh']=}ドル")
+# STOCK_info['fiftyTwoWeekHigh']=237.23ドル
+
+
 ########################################################
 import requests
 import json
