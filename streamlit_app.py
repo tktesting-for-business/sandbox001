@@ -10,34 +10,15 @@ import pymupdf4llm
 
 import yfinance as yf
 
-#Tikerで一つの銘柄の情報を取得　例は アップル。2024/8/17時点
-STOCK = yf.Ticker("AAPL") 
+# トヨタ自動車の株価データを取得
+ticker_symbol = "7203.T"
+ticker_data = yf.Ticker(ticker_symbol)
 
-# 情報取得(.info)
-STOCK_info = STOCK.info
+# 過去1週間のデータを取得
+hist_data = ticker_data.history(period="1wk")
 
-# シンボル
-st.write(f"{STOCK_info['underlyingSymbol']=}")
-# STOCK_info['underlyingSymbol']='AAPL'
-
-# 会社名
-st.write(f"{STOCK_info['shortName']=}")
-# STOCK_info['shortName']='Apple Inc.'
-
-st.write(f"{STOCK_info['longName']=}")
-# STOCK_info['longName']='Apple Inc.'
-
-# 現在値
-st.write(f"{STOCK_info['currentPrice']=}ドル")
-# STOCK_info['currentPrice']=226.05ドル
-
-# 52週最高値
-st.write(f"{STOCK_info['fiftyTwoWeekLow']=}ドル")
-# STOCK_info['fiftyTwoWeekLow']=164.08ドル
-
-# 52週最低値
-st.write(f"{STOCK_info['fiftyTwoWeekHigh']=}ドル")
-# STOCK_info['fiftyTwoWeekHigh']=237.23ドル
+# 取得したデータを表示
+st.write(hist_data)
 
 
 ########################################################
