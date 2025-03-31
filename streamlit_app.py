@@ -10,8 +10,8 @@ import pymupdf4llm
 ########################################################
 import yfinance as yf
 
-# トヨタ自動車の株価データを取得
-ticker_symbol = "7203.T"
+# 大和ハウスの株価データを取得
+ticker_symbol = "1925.T"
 ticker_data = yf.Ticker(ticker_symbol)
 
 # 過去1週間のデータを取得
