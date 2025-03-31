@@ -23,8 +23,8 @@ ticker_data = yf.Ticker(ticker_symbol)
 ticker_info = yf.Ticker(ticker_symbol)
 
 # 貸借対照表
-balance_sheet = ticker_info.balance_sheet
-st.write(balance_sheet)
+#balance_sheet = ticker_info.balance_sheet
+#st.write(balance_sheet)
 
 # キャッシュフロー
 #cash_flow = ticker_info.cash_flow
@@ -36,7 +36,8 @@ st.write(balance_sheet)
 #earnings_dates = ticker_info.earnings_dates
 
 # 財務諸表
-#financials = ticker_info.financials
+financials = ticker_info.financials
+st.write(financials)
 
 # 企業情報
 #info = ticker_info.info
