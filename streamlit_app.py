@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import pymupdf4llm
 
 
-
+########################################################
 import yfinance as yf
 
 # トヨタ自動車の株価データを取得
@@ -15,11 +15,43 @@ ticker_symbol = "7203.T"
 ticker_data = yf.Ticker(ticker_symbol)
 
 # 過去1週間のデータを取得
-hist_data = ticker_data.history(period="1wk")
+#hist_data = ticker_data.history(period="1wk")
 
 # 取得したデータを表示
-st.write(hist_data)
+#st.write(hist_data)
 
+ticker_info = yf.Ticker(ticker_symbol)
+
+# 貸借対照表
+balance_sheet = ticker_info.balance_sheet
+st.write(balance_sheet)
+
+# キャッシュフロー
+#cash_flow = ticker_info.cash_flow
+
+# 配当金
+#dividends = ticker_info.dividends
+
+# 決算日
+#earnings_dates = ticker_info.earnings_dates
+
+# 財務諸表
+#financials = ticker_info.financials
+
+# 企業情報
+#info = ticker_info.info
+
+# ニュース
+#news = ticker_info.news
+
+# 四半期貸借対照表
+#quarterly_balance_sheet = ticker_info.quarterly_balance_sheet
+
+# 四半期キャッシュフロー
+#quarterly_cash_flow = ticker_info.quarterly_cash_flow
+
+# 四半期財務諸表
+#quarterly_financials = ticker_info.quarterly_financials
 
 ########################################################
 import requests
