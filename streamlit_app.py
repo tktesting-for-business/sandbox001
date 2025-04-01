@@ -9,7 +9,6 @@ import pymupdf4llm
 
 ########################################################
 import yfinance as yf
-import yahoo_fin.stock_info as si
 
 # 大和ハウスの株価データを取得
 ticker_symbol = "1925.T"
@@ -28,7 +27,7 @@ ticker_info = yf.Ticker(ticker_symbol)
 balance_sheet = ticker_info.balance_sheet
 st.write("Balance Sheet")
 #st.write(balance_sheet)
-st.write(si.get_balance_sheet()["Working Capital"])
+st.write(balance_sheet["Working Capital"])
 
 # 損益計算書
 income_stmt = ticker_info.income_stmt #年単位
