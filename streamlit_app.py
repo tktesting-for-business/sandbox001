@@ -34,6 +34,7 @@ st.write(balance_sheet)
 income_stmt = ticker_info.income_stmt #年単位
 #income_stmt = ticker_info.quarterly_income_stmt #4ヶ月単位
 st.write("Income Statement")
+income_stmt.columns = income_stmt.columns[::-1]
 st.write(income_stmt)
 
 # キャッシュフロー
