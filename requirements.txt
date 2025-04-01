@@ -6,3 +6,4 @@ pdf2image
 easyocr
 pymupdf4llm
 yfinance
+yahoo_fin.stock_info
