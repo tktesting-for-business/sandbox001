@@ -27,7 +27,7 @@ ticker_info = yf.Ticker(ticker_symbol)
 balance_sheet = ticker_info.balance_sheet
 st.write("Balance Sheet")
 balance_sheet.columns = balance_sheet.columns[::-1]
-balance_sheet.columns = balance_sheet.columns[0]
+aaa = balance_sheet.columns[0]()["Working Capital"]
 st.write(balance_sheet)
 #st.write(balance_sheet["Working Capital"])
 
