@@ -12,6 +12,7 @@ import yfinance as yf
 
 # 大和ハウスの株価データを取得
 ticker_symbol = "1925.T"
+st.write(ticker_symbol)
 ticker_data = yf.Ticker(ticker_symbol)
 
 # 過去1週間のデータを取得
@@ -23,12 +24,14 @@ ticker_data = yf.Ticker(ticker_symbol)
 ticker_info = yf.Ticker(ticker_symbol)
 
 # 貸借対照表
-#balance_sheet = ticker_info.balance_sheet
-#st.write(balance_sheet)
+balance_sheet = ticker_info.balance_sheet
+st.write("Balance Sheet")
+st.write(balance_sheet)
 
-#損益計算書
+# 損益計算書
 income_stmt = ticker_info.income_stmt #年単位
 #income_stmt = ticker_info.quarterly_income_stmt #4ヶ月単位
+st.write("Income Statement")
 st.write(income_stmt)
 
 # キャッシュフロー
