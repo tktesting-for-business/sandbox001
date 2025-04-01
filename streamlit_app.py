@@ -29,7 +29,7 @@ ticker_info = yf.Ticker(ticker_symbol)
 #損益計算書
 income_stmt = ticker_info.income_stmt #年単位
 #income_stmt = ticker_info.quarterly_income_stmt #4ヶ月単位
-st.write(balance_sheet)
+st.write(income_stmt)
 
 # キャッシュフロー
 #cash_flow = ticker_info.cash_flow
