@@ -27,11 +27,9 @@ ticker_info = yf.Ticker(ticker_symbol)
 balance_sheet = ticker_info.balance_sheet
 st.write("Balance Sheet")
 balance_sheet.columns = balance_sheet.columns[::-1]
-#st.write(balance_sheet)
-#st.write(balance_sheet["Working Capital"])
+st.write(balance_sheet)
 if "Working Capital" in balance_sheet.index:
     working_capital_data = balance_sheet.loc["Working Capital"]
-
     st.write(f"\n--- Working Capital for {ticker_symbol} ---")
     st.write(working_capital_data)
 
