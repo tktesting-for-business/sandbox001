@@ -26,7 +26,7 @@ ticker_info = yf.Ticker(ticker_symbol)
 # 貸借対照表
 balance_sheet = ticker_info.balance_sheet
 st.write("Balance Sheet")
-st.write(balance_sheet)
+st.write(balance_sheet["Working Capital"])
 
 # 損益計算書
 income_stmt = ticker_info.income_stmt #年単位
