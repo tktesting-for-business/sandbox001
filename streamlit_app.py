@@ -56,7 +56,12 @@ def income_stmt_items(item):
         item_data = income_stmt.loc[item]
         return item_data
 
-st.write(income_stmt_items("Operating Income"))
+Total_Revenue =income_stmt_items("Total Revenue")
+Gross_Profit =income_stmt_items("Gross Profit")
+Operating_Income =income_stmt_items("Operating Income")
+Pretax_Income =income_stmt_items("Pretax Income")
+Net_Income =income_stmt_items("Net Income")
+st.write(Net_Income)
 
 """
 Total Revenue
