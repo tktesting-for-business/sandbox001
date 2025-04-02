@@ -43,7 +43,7 @@ st.write("Income Statement")
 
 
 #######################################
-def income_stmt_outline(ticker_symbol)
+def income_stmt_outline(ticker_symbol):
     ticker_info = yf.Ticker(ticker_symbol)
     income_stmt = ticker_info.income_stmt #年単位
     #income_stmt = ticker_info.quarterly_income_stmt #4ヶ月単位
