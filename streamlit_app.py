@@ -32,7 +32,7 @@ st.write(balance_sheet)
 def show_balance_sheet_item(item):
     if item in balance_sheet.index:
         item_data = balance_sheet.loc[item]
-        st.write(f"\n--- " + item + " for {ticker_symbol} ---")
+        st.write(f"\n--- " + item + " for " + ticker_symbol + " ---")
         st.write(item_data)
 
 show_balance_sheet_item("Working Capital")
@@ -47,7 +47,7 @@ st.write(income_stmt)
 def show_income_stmt_item(item):
     if item in income_stmt.index:
         item_data = income_stmt.loc[item]
-        st.write(f"\n--- " + item + " for {ticker_symbol} ---")
+        st.write(f"\n--- " + item + " for " + ticker_symbol + " ---")
         st.write(item_data)
         
 show_income_stmt_item("Operating Income")
