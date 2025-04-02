@@ -65,18 +65,18 @@ def income_stmt_outline(ticker_symbol):
 df_output = income_stmt_outline(ticker_symbol)
 
 col1, col2 = st.columns([1, 3])
-#with col1:
-#   st.header("table")
-#   st.write(df_output.T)
-#with col2:
-#   st.header("line chart")
-#   st.line_chart(df_output)
+with col1:
+   st.header("table")
+   st.write(df_output.T)
+with col2:
+   st.header("line chart")
+   st.line_chart(df_output)
    
-col1.subheader("table")
-col1.write(df_output.T)
+#col1.subheader("table")
+#col1.write(df_output.T)
 
-col2.subheader("line chart")
-col2.line_chart(df_output)
+#col2.subheader("line chart")
+#col2.line_chart(df_output)
 
 # キャッシュフロー
 #cash_flow = ticker_info.cash_flow
