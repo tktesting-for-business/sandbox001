@@ -44,13 +44,20 @@ st.write("Income Statement")
 income_stmt.columns = income_stmt.columns[::-1]
 st.write(income_stmt)
 
-def show_income_stmt_item(item):
+#def show_income_stmt_item(item):
+#    if item in income_stmt.index:
+#        item_data = income_stmt.loc[item]
+#        st.write(f"\n--- " + item + " for " + ticker_symbol + " ---")
+#        st.write(item_data)
+#show_income_stmt_item("Operating Income")
+
+def income_stmt_items(item):
     if item in income_stmt.index:
         item_data = income_stmt.loc[item]
-        st.write(f"\n--- " + item + " for " + ticker_symbol + " ---")
-        st.write(item_data)
-        
-show_income_stmt_item("Operating Income")
+        return item_data
+
+st.write(income_stmt_items("Operating Income"))
+
 """
 Total Revenue
 Gross Profit
