@@ -42,14 +42,7 @@ income_stmt = ticker_info.income_stmt #年単位
 #income_stmt = ticker_info.quarterly_income_stmt #4ヶ月単位
 st.write("Income Statement")
 income_stmt.columns = income_stmt.columns[::-1]
-st.write(income_stmt)
-
-#def show_income_stmt_item(item):
-#    if item in income_stmt.index:
-#        item_data = income_stmt.loc[item]
-#        st.write(f"\n--- " + item + " for " + ticker_symbol + " ---")
-#        st.write(item_data)
-#show_income_stmt_item("Operating Income")
+#st.write(income_stmt)
 
 def income_stmt_items(item):
     if item in income_stmt.index:
@@ -64,13 +57,7 @@ Net_Income =income_stmt_items("Net Income")
 
 df_output = pd.concat([Total_Revenue, Gross_Profit,Operating_Income,Pretax_Income,Net_Income], axis=1) # axis=1 で列方向に結合
 st.write(df_output)
-"""
-Total Revenue
-Gross Profit
-Operating Income
-Pretax Income
-Net Income
-"""
+
 
 # キャッシュフロー
 #cash_flow = ticker_info.cash_flow
