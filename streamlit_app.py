@@ -61,8 +61,9 @@ Gross_Profit =income_stmt_items("Gross Profit")
 Operating_Income =income_stmt_items("Operating Income")
 Pretax_Income =income_stmt_items("Pretax Income")
 Net_Income =income_stmt_items("Net Income")
-st.write(Net_Income)
 
+df_output = pd.concat([Total_Revenue, Gross_Profit], axis=1) # axis=1 で列方向に結合
+st.write(df_output)
 """
 Total Revenue
 Gross Profit
