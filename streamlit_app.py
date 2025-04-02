@@ -38,24 +38,31 @@ def show_balance_sheet_item(item):
 #show_balance_sheet_item("Working Capital")
 
 # 損益計算書
-income_stmt = ticker_info.income_stmt #年単位
-#income_stmt = ticker_info.quarterly_income_stmt #4ヶ月単位
 st.write("Income Statement")
-income_stmt.columns = income_stmt.columns[::-1]
 #st.write(income_stmt)
 
-def income_stmt_items(item):
-    if item in income_stmt.index:
-        item_data = income_stmt.loc[item]
-        return item_data
 
-Total_Revenue =income_stmt_items("Total Revenue")
-Gross_Profit =income_stmt_items("Gross Profit")
-Operating_Income =income_stmt_items("Operating Income")
-Pretax_Income =income_stmt_items("Pretax Income")
-Net_Income =income_stmt_items("Net Income")
+#######################################
+def income_stmt_outline(ticker_symbol)
+    ticker_info = yf.Ticker(ticker_symbol)
+    income_stmt = ticker_info.income_stmt #年単位
+    #income_stmt = ticker_info.quarterly_income_stmt #4ヶ月単位
+    income_stmt.columns = income_stmt.columns[::-1]
 
-df_output = pd.concat([Total_Revenue, Gross_Profit,Operating_Income,Pretax_Income,Net_Income], axis=1) # axis=1 で列方向に結合
+    def income_stmt_items(item):
+        if item in income_stmt.index:
+            item_data = income_stmt.loc[item]
+            return item_data
+    
+    Total_Revenue =income_stmt_items("Total Revenue")
+    Gross_Profit =income_stmt_items("Gross Profit")
+    Operating_Income =income_stmt_items("Operating Income")
+    Pretax_Income =income_stmt_items("Pretax Income")
+    Net_Income =income_stmt_items("Net Income")
+    return pd.concat([Total_Revenue, Gross_Profit,Operating_Income,Pretax_Income,Net_Income], axis=1) # axis=1 で列方向に結合
+#######################################
+
+df_output = income_stmt_outline(ticker_symbol)
 
 col1, col2 = st.columns([1, 3])
 #with col1:
