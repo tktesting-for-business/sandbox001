@@ -62,19 +62,23 @@ def income_stmt_outline(ticker_symbol):
     return pd.concat([Total_Revenue, Gross_Profit,Operating_Income,Pretax_Income,Net_Income], axis=1) # axis=1 で列方向に結合
 #######################################
 
-df_output = income_stmt_outline(ticker_symbol)
 
-col1, col2 = st.columns([1, 3])
+col1, col2 = st.columns([1, 1])
 with col1:
-   st.header("table")
-   st.write(df_output.T)
+    ticker_symbol = "1925.T"
+    st.header(ticker_symbol)
+    df_output = income_stmt_outline(ticker_symbol)
+    st.write(df_output.T)
+    st.line_chart(df_output)
 with col2:
-   st.header("line chart")
-   st.line_chart(df_output)
+    ticker_symbol = "1928.T"
+    st.header(ticker_symbol)
+    df_output = income_stmt_outline(ticker_symbol)
+    st.write(df_output.T)
+    st.line_chart(df_output)
    
 #col1.subheader("table")
 #col1.write(df_output.T)
-
 #col2.subheader("line chart")
 #col2.line_chart(df_output)
 
