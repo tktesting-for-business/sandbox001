@@ -51,7 +51,13 @@ def show_income_stmt_item(item):
         st.write(item_data)
         
 show_income_stmt_item("Operating Income")
-
+"""
+Total Revenue
+Gross Profit
+Operating Income
+Pretax Income
+Net Income
+"""
 
 # キャッシュフロー
 #cash_flow = ticker_info.cash_flow
