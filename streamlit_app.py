@@ -58,12 +58,18 @@ Net_Income =income_stmt_items("Net Income")
 df_output = pd.concat([Total_Revenue, Gross_Profit,Operating_Income,Pretax_Income,Net_Income], axis=1) # axis=1 で列方向に結合
 
 col1, col2 = st.columns([1, 3])
-with col1:
-   st.header("table")
-   st.write(df_output.T)
-with col2:
-   st.header("line chart")
-   st.line_chart(df_output)
+#with col1:
+#   st.header("table")
+#   st.write(df_output.T)
+#with col2:
+#   st.header("line chart")
+#   st.line_chart(df_output)
+   
+col1.subheader("table")
+col1.write(df_output.T)
+
+col2.subheader("line chart")
+col2.line_chart(df_output)
 
 # キャッシュフロー
 #cash_flow = ticker_info.cash_flow
