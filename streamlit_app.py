@@ -56,7 +56,7 @@ Pretax_Income =income_stmt_items("Pretax Income")
 Net_Income =income_stmt_items("Net Income")
 
 df_output = pd.concat([Total_Revenue, Gross_Profit,Operating_Income,Pretax_Income,Net_Income], axis=1) # axis=1 で列方向に結合
-st.write(df_output)
+st.write(df_output.T)
 
 
 # キャッシュフロー
