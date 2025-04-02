@@ -28,10 +28,14 @@ balance_sheet = ticker_info.balance_sheet
 st.write("Balance Sheet")
 balance_sheet.columns = balance_sheet.columns[::-1]
 st.write(balance_sheet)
-if "Working Capital" in balance_sheet.index:
-    working_capital_data = balance_sheet.loc["Working Capital"]
-    st.write(f"\n--- Working Capital for {ticker_symbol} ---")
-    st.write(working_capital_data)
+
+def show_balance_sheet_item(item):
+    if item in balance_sheet.index:
+        item_data = balance_sheet.loc[item]
+        st.write(f"\n--- Working Capital for {ticker_symbol} ---")
+        st.write(item_data)
+
+show_balance_sheet_item("Working Capital")
 
 # 損益計算書
 income_stmt = ticker_info.income_stmt #年単位
