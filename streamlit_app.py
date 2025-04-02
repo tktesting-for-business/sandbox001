@@ -55,13 +55,12 @@ Operating_Income =income_stmt_items("Operating Income")
 Pretax_Income =income_stmt_items("Pretax Income")
 Net_Income =income_stmt_items("Net Income")
 
-df_output_tmp = pd.concat([Total_Revenue, Gross_Profit,Operating_Income,Pretax_Income,Net_Income], axis=1) # axis=1 で列方向に結合
-df_output = df_output_tmp.T
+df_output = pd.concat([Total_Revenue, Gross_Profit,Operating_Income,Pretax_Income,Net_Income], axis=1) # axis=1 で列方向に結合
 
 col1, col2 = st.columns(2)
 with col1:
    st.header("table")
-   st.write(df_output)
+   st.write(df_output.T)
 with col2:
    st.header("line chart")
    st.line_chart(df_output)
