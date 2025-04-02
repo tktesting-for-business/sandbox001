@@ -25,9 +25,9 @@ ticker_info = yf.Ticker(ticker_symbol)
 
 # 貸借対照表
 balance_sheet = ticker_info.balance_sheet
-st.write("Balance Sheet")
+#st.write("Balance Sheet")
 balance_sheet.columns = balance_sheet.columns[::-1]
-st.write(balance_sheet)
+#st.write(balance_sheet)
 
 def show_balance_sheet_item(item):
     if item in balance_sheet.index:
@@ -35,7 +35,7 @@ def show_balance_sheet_item(item):
         st.write(f"\n--- " + item + " for " + ticker_symbol + " ---")
         st.write(item_data)
 
-show_balance_sheet_item("Working Capital")
+#show_balance_sheet_item("Working Capital")
 
 # 損益計算書
 income_stmt = ticker_info.income_stmt #年単位
