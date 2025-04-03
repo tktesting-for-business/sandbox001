@@ -77,7 +77,7 @@ col1, col2 = st.columns([2, 2])
 
 with col1:
     ticker_symbol = "1925.T"
-    st.header(ticker_symbol + ": " + yf.Ticker(ticker_symbol).info["longName"])
+    st.header("# " + ticker_symbol + ": " + yf.Ticker(ticker_symbol).info["longName"])
     df_output = income_stmt_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output)
