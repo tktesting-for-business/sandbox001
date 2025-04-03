@@ -35,9 +35,9 @@ ticker_data = yf.Ticker(ticker_symbol)
 ticker_info = yf.Ticker(ticker_symbol)
 
 # 貸借対照表
-balance_sheet = ticker_info.balance_sheet
+#balance_sheet = ticker_info.balance_sheet
 #st.write("Balance Sheet")
-balance_sheet.columns = balance_sheet.columns[::-1]
+#balance_sheet.columns = balance_sheet.columns[::-1]
 #st.write(balance_sheet)
 
 def show_balance_sheet_item(item):
