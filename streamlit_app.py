@@ -79,7 +79,12 @@ with col1:
     st.divider()
     st.subheader("Cash Flow")
     st.divider()
+    # 貸借対照表
     st.subheader("Balance Sheet")
+    ticker_info = yf.Ticker(ticker_symbol)
+    balance_sheet = ticker_info.balance_sheet
+    balance_sheet.columns = balance_sheet.columns[::-1]
+    st.write(balance_sheet)
 
 with col2:
     ticker_symbol = "1928.T"
@@ -91,7 +96,13 @@ with col2:
     st.divider()
     st.subheader("Cash Flow")
     st.divider()
+    # 貸借対照表
     st.subheader("Balance Sheet")
+    ticker_info = yf.Ticker(ticker_symbol)
+    balance_sheet = ticker_info.balance_sheet
+    balance_sheet.columns = balance_sheet.columns[::-1]
+    st.write(balance_sheet)
+
 
 # キャッシュフロー
 #cash_flow = ticker_info.cash_flow
