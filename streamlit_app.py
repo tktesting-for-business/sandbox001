@@ -9,7 +9,7 @@ import pymupdf4llm
 #import sandbox_app
 
 st.set_page_config(layout="wide")
-st.title("main title")
+st.title("Analyzing financial statements")
 with st.sidebar:
     st.title("sidebar title")
     st.button("hello")
