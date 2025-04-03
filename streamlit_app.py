@@ -10,6 +10,7 @@ import pymupdf4llm
 
 st.set_page_config(layout="wide")
 st.title("Analyzing financial statements")
+st.write("This is a testing site used yfinance API")
 with st.sidebar:
     st.title("sidebar title")
     st.button("hello")
