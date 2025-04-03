@@ -47,6 +47,7 @@ def show_balance_sheet_item(item):
 #show_balance_sheet_item("Working Capital")
 
 # 損益計算書
+st.divider()
 st.subheader("Income Statement")
 #######################################
 def income_stmt_outline(ticker_symbol):
