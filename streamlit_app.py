@@ -47,9 +47,7 @@ def show_balance_sheet_item(item):
 #show_balance_sheet_item("Working Capital")
 
 # 損益計算書
-#st.write("Income Statement")
-
-
+st.subheader("Income Statement")
 #######################################
 def income_stmt_outline(ticker_symbol):
     ticker_info = yf.Ticker(ticker_symbol)
@@ -70,9 +68,7 @@ def income_stmt_outline(ticker_symbol):
     return pd.concat([Total_Revenue, Gross_Profit,Operating_Income,Pretax_Income,Net_Income], axis=1) # axis=1 で列方向に結合
 #######################################
 
-
 col1, col2 = st.columns([2, 2],border=True)
-
 with col1:
     ticker_symbol = "1925.T"
     st.header(ticker_symbol + ": " + yf.Ticker(ticker_symbol).info["longName"])
@@ -85,11 +81,8 @@ with col2:
     df_output = income_stmt_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output)
-   
-#col1.subheader("table")
-#col1.write(df_output.T)
-#col2.subheader("line chart")
-#col2.line_chart(df_output)
+
+st.divider()
 
 # キャッシュフロー
 #cash_flow = ticker_info.cash_flow
