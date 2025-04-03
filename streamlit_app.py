@@ -6,7 +6,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pymupdf4llm
 
-import sandbox_app
+#import sandbox_app
 
 ########################################################
 import yfinance as yf
