@@ -49,7 +49,6 @@ def show_balance_sheet_item(item):
 
 # 損益計算書
 st.divider()
-st.subheader("Income Statement")
 #######################################
 def income_stmt_outline(ticker_symbol):
     ticker_info = yf.Ticker(ticker_symbol)
@@ -74,17 +73,26 @@ col1, col2 = st.columns([2, 2],border=True)
 with col1:
     ticker_symbol = "1925.T"
     st.header(ticker_symbol + ": " + yf.Ticker(ticker_symbol).info["longName"])
+    st.subheader("Income Statement")
     df_output = income_stmt_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output)
+    st.divider()
+    st.subheader("Cash Flow")
+    st.divider()
+    st.subheader("Balance Sheet")
+
 with col2:
     ticker_symbol = "1928.T"
     st.header(ticker_symbol + ": " + yf.Ticker(ticker_symbol).info["longName"])
+    st.subheader("Income Statement")
     df_output = income_stmt_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output)
-
-st.divider()
+    st.divider()
+    st.subheader("Cash Flow")
+    st.divider()
+    st.subheader("Balance Sheet")
 
 # キャッシュフロー
 #cash_flow = ticker_info.cash_flow
