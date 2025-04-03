@@ -78,6 +78,7 @@ with col1:
     df_output = income_stmt_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output)
+    st.bar_chart(df_output)
     #st.dataframe(df_output, column_config=column_config) # データフレームを表示
     st.divider()
     # キャッシュフロー
