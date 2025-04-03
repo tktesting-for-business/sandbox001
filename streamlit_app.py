@@ -5,7 +5,6 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pymupdf4llm
-import altair as alt
 
 #import sandbox_app
 
@@ -79,8 +78,7 @@ with col1:
     df_output = income_stmt_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output)
-    st.altair_chart(alt.Chart(df_output))
-    #st.dataframe(df_output, column_config=column_config) # データフレームを表示
+    st.bar_chart(df_output, stack=False)
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow")
