@@ -48,7 +48,6 @@ def show_balance_sheet_item(item):
 #show_balance_sheet_item("Working Capital")
 
 # 損益計算書
-st.divider()
 #######################################
 def income_stmt_outline(ticker_symbol):
     ticker_info = yf.Ticker(ticker_symbol)
