@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 import pymupdf4llm
 
 #import sandbox_app
+
+st.set_page_config(layout="wide")
 st.title("main title")
 with st.sidebar:
     st.title("sidebar title")
