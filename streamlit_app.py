@@ -20,6 +20,7 @@ with st.sidebar:
     
 ########################################################
 import yfinance as yf
+from streamlit.column_config import BarChartColumn
 
 # 大和ハウスの株価データを取得
 ticker_symbol = "1925.T"
