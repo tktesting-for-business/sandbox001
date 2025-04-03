@@ -81,7 +81,7 @@ with col1:
     # キャッシュフロー
     st.subheader("Cash Flow")
     ticker_info = yf.Ticker(ticker_symbol)
-    balance_sheet = ticker_info.cash_flow
+    cash_flow = ticker_info.cash_flow
     cash_flow.columns = cash_flow.columns[::-1]
     st.write(cash_flow)
     st.divider()
@@ -104,7 +104,7 @@ with col2:
     # キャッシュフロー
     st.subheader("Cash Flow")
     ticker_info = yf.Ticker(ticker_symbol)
-    balance_sheet = ticker_info.cash_flow
+    cash_flow = ticker_info.cash_flow
     cash_flow.columns = cash_flow.columns[::-1]
     st.write(cash_flow)
     st.divider()
