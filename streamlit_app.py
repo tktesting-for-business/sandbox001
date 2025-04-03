@@ -71,7 +71,7 @@ def income_stmt_outline(ticker_symbol):
 #######################################
 
 
-col1, col2 = st.columns([2, 2])
+col1, col2 = st.columns([2, 2],border=True)
 
 with col1:
     ticker_symbol = "1925.T"
