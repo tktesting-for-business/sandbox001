@@ -5,6 +5,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pymupdf4llm
+import altair as alt
 
 #import sandbox_app
 
