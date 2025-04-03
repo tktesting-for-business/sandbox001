@@ -6,4 +6,4 @@ pdf2image
 easyocr
 pymupdf4llm
 yfinance
-
+BarChartColumn
