@@ -69,12 +69,12 @@ def income_stmt_outline(ticker_symbol):
     return pd.concat([Total_Revenue, Gross_Profit,Operating_Income,Pretax_Income,Net_Income], axis=1) # axis=1 で列方向に結合
 #######################################
 
-
+# キャッシュフロー
 #######################################
 def Cash_Flow_outline(ticker_symbol):
     ticker_info = yf.Ticker(ticker_symbol)
-    Cash_Flow = ticker_info.income_stmt #年単位
-    #Cash_Flow = ticker_info.quarterly_income_stmt #4ヶ月単位
+    Cash_Flow = ticker_info.cash_flow #年単位
+    #Cash_Flow = ticker_info.quarterly_cash_flow #4ヶ月単位
     Cash_Flow.columns = Cash_Flow.columns[::-1]
 
     def Cash_Flow_outline_items(item):
