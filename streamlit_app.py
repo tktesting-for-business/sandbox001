@@ -39,6 +39,25 @@ ticker_info = yf.Ticker(ticker_symbol)
 #st.write("Balance Sheet")
 #balance_sheet.columns = balance_sheet.columns[::-1]
 #st.write(balance_sheet)
+#######################################
+def balance_sheet_outline(ticker_symbol):
+    ticker_info = yf.Ticker(ticker_symbol)
+    balance_sheet = ticker_info.income_stmt #年単位
+    #balance_sheet = ticker_info.quarterly_income_stmt #4ヶ月単位
+    balance_sheet.columns = balance_sheet.columns[::-1]
+
+    def balance_sheet_items(item):
+        if item in balance_sheet.index:
+            item_data = balance_sheet.loc[item]
+            return item_data
+    
+    Operating_CF =balance_sheet_items("Operating Cash Flow")
+    Investing_CF =balance_sheet_items("Investing Cash Flow")
+    Free_CF =balance_sheet_items("Free Cash Flow")
+    Financing_CF =balance_sheet_items("Financing Cash Flow")
+    return pd.concat([Operating_CF, Investing_CF, Free_CF, Financing_CF], axis=1) # axis=1 で列方向に結合
+#######################################
+
 
 def show_balance_sheet_item(item):
     if item in balance_sheet.index:
@@ -84,10 +103,13 @@ with col1:
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow")
-    ticker_info = yf.Ticker(ticker_symbol)
-    cash_flow = ticker_info.cash_flow
-    cash_flow.columns = cash_flow.columns[::-1]
-    st.write(cash_flow)
+    df_output = balance_sheet_outline(ticker_symbol)
+    st.write(df_output.T)
+    st.line_chart(df_output)
+    #ticker_info = yf.Ticker(ticker_symbol)
+    #cash_flow = ticker_info.cash_flow
+    #cash_flow.columns = cash_flow.columns[::-1]
+    #st.write(cash_flow)    
     st.divider()
     # 貸借対照表
     st.subheader("Balance Sheet")
