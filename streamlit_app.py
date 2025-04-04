@@ -78,10 +78,9 @@ with col1:
     df_output = income_stmt_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output)
-    st.write(df_output.index.values)
-    st.write(df_output.columns.values)
-    
-    #st.bar_chart(df_output, stack=False,horizontal=True)
+    #st.write(df_output.index.values) # 行名取得
+    #st.write(df_output.columns.values) # 列名取得
+    st.bar_chart(df_output[1], stack=False,horizontal=True)
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow")
