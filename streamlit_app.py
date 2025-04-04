@@ -39,25 +39,6 @@ ticker_info = yf.Ticker(ticker_symbol)
 #st.write("Balance Sheet")
 #balance_sheet.columns = balance_sheet.columns[::-1]
 #st.write(balance_sheet)
-#######################################
-def balance_sheet_outline(ticker_symbol):
-    ticker_info = yf.Ticker(ticker_symbol)
-    balance_sheet = ticker_info.income_stmt #年単位
-    #balance_sheet = ticker_info.quarterly_income_stmt #4ヶ月単位
-    balance_sheet.columns = balance_sheet.columns[::-1]
-
-    def balance_sheet_items(item):
-        if item in balance_sheet.index:
-            item_data = balance_sheet.loc[item]
-            return item_data
-    
-    Operating_CF =balance_sheet_items("Operating Cash Flow")
-    Investing_CF =balance_sheet_items("Investing Cash Flow")
-    Free_CF =balance_sheet_items("Free Cash Flow")
-    Financing_CF =balance_sheet_items("Financing Cash Flow")
-    return pd.concat([Operating_CF, Investing_CF, Free_CF, Financing_CF], axis=1) # axis=1 で列方向に結合
-#######################################
-
 
 def show_balance_sheet_item(item):
     if item in balance_sheet.index:
@@ -88,6 +69,28 @@ def income_stmt_outline(ticker_symbol):
     return pd.concat([Total_Revenue, Gross_Profit,Operating_Income,Pretax_Income,Net_Income], axis=1) # axis=1 で列方向に結合
 #######################################
 
+
+#######################################
+def Cash_Flow_outline(ticker_symbol):
+    ticker_info = yf.Ticker(ticker_symbol)
+    Cash_Flow = ticker_info.income_stmt #年単位
+    #Cash_Flow = ticker_info.quarterly_income_stmt #4ヶ月単位
+    Cash_Flow.columns = Cash_Flow.columns[::-1]
+
+    def Cash_Flow_outline_items(item):
+        if item in Cash_Flow.index:
+            item_data = Cash_Flow.loc[item]
+            return item_data
+    
+    Operating_CF =Cash_Flow_outline_items("Operating Cash Flow")
+    Investing_CF =Cash_Flow_outline_items("Investing Cash Flow")
+    Free_CF =Cash_Flow_outline_items("Free Cash Flow")
+    Financing_CF =Cash_Flow_outline_items("Financing Cash Flow")
+    return pd.concat([Operating_CF, Investing_CF, Free_CF, Financing_CF], axis=1) # axis=1 で列方向に結合
+#######################################
+
+
+
 col1, col2 = st.columns([2, 2],border=True)
 with col1:
     ticker_symbol = "1925.T"
@@ -103,7 +106,7 @@ with col1:
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow")
-    df_output = balance_sheet_outline(ticker_symbol)
+    df_output = Cash_Flow_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output)
     #ticker_info = yf.Ticker(ticker_symbol)
