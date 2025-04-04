@@ -108,11 +108,7 @@ with col1:
     st.subheader("Cash Flow")
     df_output = Cash_Flow_outline(ticker_symbol)
     st.write(df_output.T)
-    st.line_chart(df_output)
-    #ticker_info = yf.Ticker(ticker_symbol)
-    #cash_flow = ticker_info.cash_flow
-    #cash_flow.columns = cash_flow.columns[::-1]
-    #st.write(cash_flow)    
+    st.line_chart(df_output) 
     st.divider()
     # 貸借対照表
     st.subheader("Balance Sheet")
@@ -133,10 +129,9 @@ with col2:
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow")
-    ticker_info = yf.Ticker(ticker_symbol)
-    cash_flow = ticker_info.cash_flow
-    cash_flow.columns = cash_flow.columns[::-1]
-    st.write(cash_flow)
+    df_output = Cash_Flow_outline(ticker_symbol)
+    st.write(df_output.T)
+    st.line_chart(df_output) 
     st.divider()
     # 貸借対照表
     st.subheader("Balance Sheet")
