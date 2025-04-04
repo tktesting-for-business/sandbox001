@@ -80,7 +80,7 @@ with col1:
     st.line_chart(df_output)
     #st.write(df_output.index.values) # 行名取得
     #st.write(df_output.columns.values) # 列名取得
-    st.bar_chart(df_output.head(), stack=False,horizontal=True)
+    st.bar_chart(df_output.T.head(), stack=False,horizontal=True)
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow")
