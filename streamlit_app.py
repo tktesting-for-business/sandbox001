@@ -145,30 +145,7 @@ with col1:
     st.line_chart(df_output)
     #st.write(df_output.index.values) # 行名取得
     #st.write(df_output.columns.values) # 列名取得
-    st.bar_chart(df_output.T.head(), stack=False)
-    ### test ###
-    # データフレームを作成
-    data = {
-        "date": [df_output.index],
-        "values": [df_output.values]
-    }
-    df = pd.DataFrame(data)
-
-    st.write(data)
-    
-    # BarChartColumnで列をカスタマイズ
-    cfg = {
-        "values": BarChartColumn(
-            label=" (単位: 円)",
-            help="各項目の売上を棒グラフで表示します。",
-            y_min=0,  # Y軸の最小値
-            y_max=1000000000  # Y軸の最大値
-        )
-    }
-    # データフレームを表示
-    #st.dataframe(df, column_config=cfg)
-
-    
+    st.bar_chart(df_output.T.head(), stack=False)    
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow")
