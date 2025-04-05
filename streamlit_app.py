@@ -30,14 +30,18 @@ with st.sidebar:
 #df_bs=ticker_info.balance_sheet/1000000000 #貸借対照表
 
 
-def balance_sheet_graph(df_bs):
-    #Total_Assets = df_bs.loc['Total Assets']  #総資産 #リストで格納
-    Current_Assets = df_bs.loc['Current Assets'] #流動資産
-    Total_Non_Current_Assets = df_bs.loc['Total Non Current Assets'] #固定資産合計
-    Current_Liabilities = df_bs.loc['Current Liabilities'] #流動負債
-    Total_Non_Current_Liabilities_Net_Minority_Interest = df_bs.loc['Total Non Current Liabilities Net Minority Interest']#非支配株主持分控除後固定負債合計
-    Total_Equity_Gross_Minority_Interest = df_bs.loc['Total Equity Gross Minority Interest']#非支配株主持分を含む総資本
-    labels = df_bs.index.strftime('%Y-%m-%d')
+def balance_sheet_graph(ticker_symbol):
+    ticker_info = yf.Ticker(ticker_symbol)
+    balance_sheet = ticker_info.balance_sheet/1000000000 #年単位（10億円単位）
+    #balance_sheet = ticker_info.quarterly_balance_sheet/1000000000 #4ヶ月単位（10億円単位）
+    balance_sheet.columns = balance_sheet.columns[::-1]
+    Total_Assets = balance_sheet.loc['Total Assets']  #総資産 #リストで格納
+    Current_Assets = balance_sheet.loc['Current Assets'] #流動資産
+    Total_Non_Current_Assets = balance_sheet.loc['Total Non Current Assets'] #固定資産合計
+    Current_Liabilities = balance_sheet.loc['Current Liabilities'] #流動負債
+    Total_Non_Current_Liabilities_Net_Minority_Interest = balance_sheet.loc['Total Non Current Liabilities Net Minority Interest']#非支配株主持分控除後固定負債合計
+    Total_Equity_Gross_Minority_Interest = balance_sheet.loc['Total Equity Gross Minority Interest']#非支配株主持分を含む総資本
+    labels = balance_sheet.index.strftime('%Y-%m-%d')
     # グラフ描画
     fig1 = go.Figure(
        # データの指定
