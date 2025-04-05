@@ -40,7 +40,37 @@ data = {
 }
 
 # グラフ描画
-
+fig1 = go.Figure(
+   # データの指定
+   data=[
+        go.Bar(
+            name="総資産",
+            x=data["labels"],
+            y=data["総資産"],
+            offsetgroup=0,
+        ),
+        go.Bar(
+            name="負債",
+            x=data["labels"],
+            y=data["負債"],
+            offsetgroup=1,
+            base=data["純資産"],
+        ),
+        go.Bar(
+            name="純資産",
+            x=data["labels"],
+            y=data["純資産"],
+            offsetgroup=1,
+        )
+    ],
+   # レイアウトの指定
+    layout=go.Layout(
+        title="朝日新聞社_貸借対照表(BS)",
+        xaxis_title="決算期",
+        yaxis_title="JPY(単位:百万円)"
+    )
+)
+#fig1.show()
 
 ticker_info = yf.Ticker("6702.T")
 df_bs=ticker_info.balance_sheet/1000000000 #貸借対照表
