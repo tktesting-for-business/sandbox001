@@ -9,18 +9,6 @@ import yfinance as yf
 
 #import sandbox_app
 
-st.set_page_config(layout="wide")
-st.title("Analyzing financial statements")
-st.write("This is a testing site with yfinance API")
-with st.sidebar:
-    st.title("sidebar title")
-    st.button("hello")
-    st.text("hello world")
-    st.divider()
-    st.radio("fruits",["apple","orange","melon"])
-
-
-########################################################
 from plotly import graph_objs as go
 # 朝日新聞社のBSの数値をサンプルのデータとして利用
 # (子会社の朝日放送HDもしくはテレビ朝日HDが適時開示に「親会社の決算」を発表している)
@@ -70,8 +58,22 @@ fig1 = go.Figure(
         yaxis_title="JPY(単位:百万円)"
     )
 )
-st.write(data)
 fig1.show()
+
+
+st.set_page_config(layout="wide")
+st.title("Analyzing financial statements")
+st.write("This is a testing site with yfinance API")
+with st.sidebar:
+    st.title("sidebar title")
+    st.button("hello")
+    st.text("hello world")
+    st.divider()
+    st.radio("fruits",["apple","orange","melon"])
+
+
+########################################################
+
 
 
 
