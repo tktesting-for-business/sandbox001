@@ -177,32 +177,11 @@ def financial_contents_view(ticker_symbol):
     st.write(df_output.T)
     balance_sheet_graph(ticker_symbol)
 
-
 with col1:
     financial_contents_view("1925.T")
-    st.write("test")
 with col2:
-    ticker_symbol = "1928.T"
-    st.subheader(ticker_symbol + ": " + yf.Ticker(ticker_symbol).info["longName"])
-    st.divider()
-    # 損益計算書
-    st.subheader("Income Statement (Bil. JPY)")
-    df_output = income_stmt_outline(ticker_symbol)
-    st.write(df_output.T)
-    st.line_chart(df_output)
-    #st.bar_chart(df_output.T.head(), stack=False)
-    st.divider()
-    # キャッシュフロー
-    st.subheader("Cash Flow (Bil. JPY)")
-    df_output = Cash_Flow_outline(ticker_symbol)
-    st.write(df_output.T)
-    st.line_chart(df_output) 
-    st.divider()
-    # 貸借対照表
-    st.subheader("Balance Sheet (Bil. JPY)")
-    df_output = balance_sheet_outline(ticker_symbol)
-    st.write(df_output.T)
-    balance_sheet_graph(ticker_symbol)
+    financial_contents_view("1928.T")
+
 
 # 配当金
 #dividends = ticker_info.dividends
