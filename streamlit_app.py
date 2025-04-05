@@ -25,9 +25,10 @@ from plotly import graph_objs as go
 ticker_info = yf.Ticker("6702.T")
 df_bs=ticker_info.balance_sheet/1000000000 #貸借対照表
 assets = df_bs.loc['Total Assets']  #リストで格納
-liab = df_bs.loc['Total Liab']
-equity = df_bs.loc['Total Stockholder Equity']
-minority = df_bs.loc['Minority Interest']
+liab = df_bs.loc['Total Debt']
+equity = df_bs.loc['Total Non Current Liabilities Net Minority Interest']
+minority = df_bs.loc['Total Equity Gross Minority Interest']
+
 labels = df_bs.columns.strftime('%Y年%m月%d日')
 np.array(assets)-np.array(liab)-np.array(equity)-np.array(minority)
 # グラフ描画
