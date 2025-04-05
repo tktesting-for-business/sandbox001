@@ -34,7 +34,7 @@ data_df = pd.DataFrame(
 st.data_editor(
     data_df,
     column_config={
-        "sales": st.column_config.LineChartColumn(
+        "sales": st.column_config.BarChartColumn(
             "Sales (last 6 months)",
             width="medium",
             help="The sales volume in the last 6 months",
