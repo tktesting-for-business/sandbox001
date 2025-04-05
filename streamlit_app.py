@@ -150,7 +150,7 @@ with col1:
     # データフレームを作成
     data = {
         "date": [df_output.iat[1, 1]],
-        "Total Revenue": [[df_output.iat[1, 2]]
+        "Total Revenue": [df_output.iat[1, 2]]
     }
 
     df = pd.DataFrame(data)
