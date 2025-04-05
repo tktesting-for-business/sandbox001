@@ -147,7 +147,16 @@ with col1:
     #st.write(df_output.columns.values) # 列名取得
     st.bar_chart(df_output.T.head(), stack=False)
 
-
+    # BarChartColumnで列をカスタマイズ
+    column_config = {
+        "Sales": BarChartColumn(
+            label="金額 (単位: 円)",
+            help="各項目を棒グラフで表示します。",
+            y_min=0  # Y軸の最小値
+        )
+    }
+    # データフレームを表示
+    st.dataframe(df_output, column_config=column_config)
 
 
 
