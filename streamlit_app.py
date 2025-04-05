@@ -32,7 +32,7 @@ data = {
 df = pd.DataFrame(data)
  
 # BarChartColumnで列をカスタマイズ
-column_config = {
+cfg = {
     "Sales": BarChartColumn(
         label="売上 (単位: 千円)",
         help="各製品の売上を棒グラフで表示します。",
@@ -42,7 +42,7 @@ column_config = {
 }
  
 # データフレームを表示
-st.dataframe(df, column_config=column_config)
+st.dataframe(df, column_config=cfg)
 
 
 ########################################################
@@ -156,7 +156,7 @@ with col1:
     df = pd.DataFrame(data)
     
     # BarChartColumnで列をカスタマイズ
-    column_config = {
+    cfg = {
         "Sales": BarChartColumn(
             label=" (単位: 円)",
             help="各項目の売上を棒グラフで表示します。",
@@ -165,7 +165,7 @@ with col1:
         )
     }
     # データフレームを表示
-    st.dataframe(data, column_config=column_config)
+    st.dataframe(df, column_config=cfg)
 
     
     st.divider()
