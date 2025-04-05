@@ -51,7 +51,7 @@ def balance_sheet_graph(df_bs):
             go.Bar(
                 name="Current Assets",
                 x=labels,
-                y=Current Assets,
+                y=Current_Assets,
                 base=Total_Non_Current_Assets,
                 offsetgroup=0,
             ),
