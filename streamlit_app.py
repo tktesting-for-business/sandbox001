@@ -152,7 +152,7 @@ with col1:
         "date": [df_output.index[0]],
         "Total Revenue": [df_output.index[0],'Total Revenue']
     }
-    df = pd.DataFrame(data)
+    #df = pd.DataFrame(data)
 
     #st.write(df_output.index[0])
     
@@ -166,7 +166,7 @@ with col1:
         )
     }
     # データフレームを表示
-    st.dataframe(df, column_config=cfg)
+    st.dataframe(df_output, column_config=cfg)
 
     
     st.divider()
