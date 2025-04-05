@@ -35,7 +35,6 @@ Current_Liabilities = df_bs.loc['Current Liabilities'] #流動負債
 Total_Non_Current_Liabilities_Net_Minority_Interest = df_bs.loc['Total Non Current Liabilities Net Minority Interest']#非支配株主持分控除後固定負債合計
 Total_Equity_Gross_Minority_Interest = df_bs.loc['Total Equity Gross Minority Interest']#非支配株主持分を含む総資本
 labels = df_bs.columns.strftime('%Y年%m月%d日')
-#np.array(assets)-np.array(liab)-np.array(equity)-np.array(minority)
 # グラフ描画
 fig1 = go.Figure(
    # データの指定
@@ -103,13 +102,6 @@ ticker_data = yf.Ticker(ticker_symbol)
 ticker_info = yf.Ticker(ticker_symbol)
 
 # 貸借対照表
-def show_balance_sheet_item(item):
-    if item in balance_sheet.index:
-        item_data = balance_sheet.loc[item]
-        st.write(f"\n--- " + item + " for " + ticker_symbol + " ---")
-        st.write(item_data)
-
-#show_balance_sheet_item("Working Capital")
 #######################################
 def balance_sheet_outline(ticker_symbol):
     ticker_info = yf.Ticker(ticker_symbol)
