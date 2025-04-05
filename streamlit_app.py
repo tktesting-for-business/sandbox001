@@ -5,6 +5,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pymupdf4llm
+import yfinance as yf
 
 #import sandbox_app
 
@@ -20,8 +21,55 @@ with st.sidebar:
 
 
 ########################################################
-import yfinance as yf
-#from streamlit.column_config import BarChartColumn
+from plotly import graph_objs as go
+df_bs=ticker_info.balance_sheet/1000000000 #貸借対照表
+assets = df_bs.loc['Total Assets']  #リストで格納
+liab = df_bs.loc['Total Liab']
+equity = df_bs.loc['Total Stockholder Equity']
+minority = df_bs.loc['Minority Interest']
+labels = df_bs.columns.strftime('%Y年%m月%d日')
+np.array(assets)-np.array(liab)-np.array(equity)-np.array(minority)
+# グラフ描画
+fig1 = go.Figure(
+   # データの指定
+   data=[
+        go.Bar(
+            name="総資産",
+            x=labels,
+            y=assets,
+            offsetgroup=0,
+        ),
+        go.Bar(
+            name="負債",
+            x=labels,
+            y=liab,
+            offsetgroup=1,
+            base=equity+minority,
+        ),
+        go.Bar(
+            name="純資産",
+            x=labels,
+            y=equity,
+            offsetgroup=1,
+            base=minority,
+        ),
+        go.Bar(
+            name="小数株主資本",
+            x=labels,
+            y=minority,
+            offsetgroup=1,
+            ),
+    ],
+   # レイアウトの指定
+    layout=go.Layout(
+        title="富士通(6702.T)_貸借対照表(BS)",
+        xaxis_title="決算期",
+        yaxis_title="JPY(単位:十億円)"
+    )
+)
+fig1.show()
+
+########################################################
 
 # 大和ハウスの株価データを取得
 ticker_symbol = "1925.T"
