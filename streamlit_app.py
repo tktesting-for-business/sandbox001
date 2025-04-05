@@ -72,16 +72,24 @@ fig1 = go.Figure(
         yaxis_title="JPY(単位:百万円)"
     )
 )
-#plot(fig1)
-#fig1.show()
 #st.plotly_chart(fig1)
-
+########################################################
 ticker_info = yf.Ticker("6702.T")
 df_bs=ticker_info.balance_sheet/1000000000 #貸借対照表
-assets = df_bs.loc['Total Assets']  #リストで格納
-liab = df_bs.loc['Total Debt']
-equity = df_bs.loc['Total Non Current Liabilities Net Minority Interest']
-minority = df_bs.loc['Total Equity Gross Minority Interest']
+Total_Assets = df_bs.loc['Total Assets']  #総資産 #リストで格納
+Current_Assets = df_bs.loc['Current Assets'] #流動資産
+Total_Non_Current_Assets = df_bs.loc['Total Non Current Assets'] #固定資産合計
+Current_Liabilities = df_bs.loc['Current Liabilities'] #流動負債
+Total_Non_Current_Liabilities_Net_Minority_Interest = df_bs.loc['Total Non Current Liabilities Net Minority Interest']#非支配株主持分控除後固定負債合計
+Total_Equity_Gross_Minority_Interest = df_bs.loc['Total Equity Gross Minority Interest']#非支配株主持分を含む総資本
+
+Total_Assets =balance_sheet_items("Total Assets") #総資産
+Current_Assets =balance_sheet_items("Current Assets") #流動資産
+Total_Non_Current_Assets =balance_sheet_items("Total Non Current Assets") #固定資産合計
+Current_Liabilities =balance_sheet_items("Current Liabilities") #流動負債
+Total_Non_Current_Liabilities_Net_Minority_Interest =balance_sheet_items("Total Non Current Liabilities Net Minority Interest") #非支配株主持分控除後固定負債合計
+Total_Equity_Gross_Minority_Interest =balance_sheet_items("Total Equity Gross Minority Interest") #非支配株主持分を含む総資本
+
 
 labels = df_bs.columns.strftime('%Y年%m月%d日')
 np.array(assets)-np.array(liab)-np.array(equity)-np.array(minority)
@@ -100,21 +108,15 @@ fig1 = go.Figure(
             x=labels,
             y=liab,
             offsetgroup=1,
-            base=equity+minority,
+            base=Current_Liabilities+Total_Non_Current_Liabilities_Net_Minority_Interest,
         ),
         go.Bar(
             name="純資産",
             x=labels,
             y=equity,
             offsetgroup=1,
-            base=minority,
+            base=Total_Equity_Gross_Minority_Interest,
         ),
-        go.Bar(
-            name="小数株主資本",
-            x=labels,
-            y=minority,
-            offsetgroup=1,
-            ),
     ],
    # レイアウトの指定
     layout=go.Layout(
