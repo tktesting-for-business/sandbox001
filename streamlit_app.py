@@ -6,11 +6,24 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pymupdf4llm
 import yfinance as yf
+from plotly import graph_objs as go
+from plotly.offline import plot
 
 #import sandbox_app
 
-from plotly import graph_objs as go
-from plotly.offline import plot
+
+st.set_page_config(layout="wide")
+st.title("Analyzing financial statements")
+st.write("This is a testing site with yfinance API")
+with st.sidebar:
+    st.title("sidebar title")
+    st.button("hello")
+    st.text("hello world")
+    st.divider()
+    st.radio("fruits",["apple","orange","melon"])
+
+
+########################################################
 # 朝日新聞社のBSの数値をサンプルのデータとして利用
 # (子会社の朝日放送HDもしくはテレビ朝日HDが適時開示に「親会社の決算」を発表している)
 data = {
@@ -61,21 +74,6 @@ fig1 = go.Figure(
 )
 plot(fig1)
 #fig1.show()
-
-
-st.set_page_config(layout="wide")
-st.title("Analyzing financial statements")
-st.write("This is a testing site with yfinance API")
-with st.sidebar:
-    st.title("sidebar title")
-    st.button("hello")
-    st.text("hello world")
-    st.divider()
-    st.radio("fruits",["apple","orange","melon"])
-
-
-########################################################
-
 
 
 
