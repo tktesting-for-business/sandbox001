@@ -20,35 +20,34 @@ with st.sidebar:
 
 
 
-data_df = pd.DataFrame(
-    {
-        "sales": [
-            [0, 4, 26, 80, 100, 40],
-            [80, 20, 80, 35, 40, 100],
-            [10, 20, 80, 80, 70, 0],
-            [10, 100, 20, 100, 30, 100],
-        ],
-    }
-)
-
-st.data_editor(
-    data_df,
-    column_config={
-        "sales": st.column_config.BarChartColumn(
-            "Sales (last 6 months)",
-            width="medium",
-            help="The sales volume in the last 6 months",
-            y_min=0,
-            y_max=100,
-         ),
-    },
-    hide_index=True,
-)
+from streamlit.column_config import BarChartColumn
+ 
+# データフレームを作成
+data = {
+    "Product": ["A", "B", "C"],
+    "Sales": [[250, 400, 150, 200, 220, 430, 230, 300, 110, 150, 200,],
+              [220, 320, 260, 150, 320, 280, 510, 300, 130, 160, 220,],
+              [120, 450, 300, 110, 300, 470, 320, 300, 120, 180, 230,]]
+}
+df = pd.DataFrame(data)
+ 
+# BarChartColumnで列をカスタマイズ
+column_config = {
+    "Sales": BarChartColumn(
+        label="売上 (単位: 千円)",
+        help="各製品の売上を棒グラフで表示します。",
+        y_min=0,  # Y軸の最小値
+        y_max=500  # Y軸の最大値
+    )
+}
+ 
+# データフレームを表示
+st.dataframe(df, column_config=column_config)
 
 
 ########################################################
 import yfinance as yf
-from streamlit.column_config import BarChartColumn
+#from streamlit.column_config import BarChartColumn
 
 # 大和ハウスの株価データを取得
 ticker_symbol = "1925.T"
@@ -147,6 +146,12 @@ with col1:
     #st.write(df_output.index.values) # 行名取得
     #st.write(df_output.columns.values) # 列名取得
     st.bar_chart(df_output.T.head(), stack=False)
+
+
+
+
+
+    
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow")
