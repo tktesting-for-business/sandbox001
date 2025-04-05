@@ -223,7 +223,7 @@ with col2:
 #earnings_dates = ticker_info.earnings_dates
 
 # 財務諸表
-financials = ticker_info.financials
+#financials = ticker_info.financials
 #st.write(financials)
 
 # 企業情報
