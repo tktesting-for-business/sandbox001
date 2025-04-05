@@ -25,15 +25,15 @@ with st.sidebar:
 
 
 ########################################################
-ticker_symbol = "1925.T"
-ticker_info = yf.Ticker(ticker_symbol)
-df_bs=ticker_info.balance_sheet/1000000000 #貸借対照表
-Total_Assets = df_bs.loc['Total Assets']  #総資産 #リストで格納
-Current_Assets = df_bs.loc['Current Assets'] #流動資産
-Total_Non_Current_Assets = df_bs.loc['Total Non Current Assets'] #固定資産合計
-Current_Liabilities = df_bs.loc['Current Liabilities'] #流動負債
-Total_Non_Current_Liabilities_Net_Minority_Interest = df_bs.loc['Total Non Current Liabilities Net Minority Interest']#非支配株主持分控除後固定負債合計
-Total_Equity_Gross_Minority_Interest = df_bs.loc['Total Equity Gross Minority Interest']#非支配株主持分を含む総資本
+#ticker_symbol = "1925.T"
+#ticker_info = yf.Ticker(ticker_symbol)
+#df_bs=ticker_info.balance_sheet/1000000000 #貸借対照表
+#Total_Assets = df_bs.loc['Total Assets']  #総資産 #リストで格納
+#Current_Assets = df_bs.loc['Current Assets'] #流動資産
+#Total_Non_Current_Assets = df_bs.loc['Total Non Current Assets'] #固定資産合計
+#Current_Liabilities = df_bs.loc['Current Liabilities'] #流動負債
+#Total_Non_Current_Liabilities_Net_Minority_Interest = df_bs.loc['Total Non Current Liabilities Net Minority Interest']#非支配株主持分控除後固定負債合計
+#Total_Equity_Gross_Minority_Interest = df_bs.loc['Total Equity Gross Minority Interest']#非支配株主持分を含む総資本
 
 def balance_sheet_graph(df_bs):
     labels = df_bs.columns.strftime('%Y-%m-%d')
@@ -89,7 +89,7 @@ def balance_sheet_graph(df_bs):
         )
     )
     st.plotly_chart(fig1)
-balance_sheet_graph(df_bs)
+#balance_sheet_graph(df_bs)
 ########################################################
 
 # 大和ハウスの株価データを取得
