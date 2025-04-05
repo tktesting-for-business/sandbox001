@@ -95,11 +95,18 @@ fig1 = go.Figure(
             offsetgroup=0,
         ),
         go.Bar(
-            name="負債",
+            name="流動負債",
             x=labels,
-            y=Current_Liabilities+Total_Non_Current_Liabilities_Net_Minority_Interest,
+            y=Current_Liabilities,
             offsetgroup=1,
             base=Total_Non_Current_Liabilities_Net_Minority_Interest,
+        ),
+       go.Bar(
+            name="固定負債",
+            x=labels,
+            y=Total_Non_Current_Liabilities_Net_Minority_Interest,
+            offsetgroup=1,
+            base=Total_Equity_Gross_Minority_Interest,
         ),
         go.Bar(
             name="純資産",
