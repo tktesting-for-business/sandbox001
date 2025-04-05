@@ -36,7 +36,7 @@ with st.sidebar:
 #Total_Equity_Gross_Minority_Interest = df_bs.loc['Total Equity Gross Minority Interest']#非支配株主持分を含む総資本
 
 def balance_sheet_graph(df_bs):
-    labels = df_bs.columns.strftime('%Y-%m-%d')
+    labels = df_bs.index.strftime('%Y-%m-%d')
     # グラフ描画
     fig1 = go.Figure(
        # データの指定
@@ -50,34 +50,34 @@ def balance_sheet_graph(df_bs):
             go.Bar(
                 name="Current Assets",
                 x=labels,
-                y=Current_Assets,
-                base=Total_Non_Current_Assets,
+                y=df_bs.columns('Current Assets'),
+                base=df_bs.columns('Total_Non_Current_Assets'),
                 offsetgroup=0,
             ),
             go.Bar(
                 name="Fixed Assets",
                 x=labels,
-                y=Total_Non_Current_Assets,
+                y=df_bs.columns('Total_Non_Current_Assets'),
                 offsetgroup=0,
             ),
             go.Bar(
                 name="Current Liabilities",
                 x=labels,
-                y=Current_Liabilities,
+                y=df_bs.columns('Current_Liabilities'),
                 offsetgroup=1,
-                base=Total_Non_Current_Liabilities_Net_Minority_Interest+Total_Equity_Gross_Minority_Interest,
+                base=df_bs.columns('Total_Non_Current_Liabilities_Net_Minority_Interest')+df_bs.columns('Total_Equity_Gross_Minority_Interest'),
             ),
            go.Bar(
                 name="Non Current Liabilitie",
                 x=labels,
-                y=Total_Non_Current_Liabilities_Net_Minority_Interest,
+                y=df_bs.columns('Total_Non_Current_Liabilities_Net_Minority_Interest'),
                 offsetgroup=1,
-                base=Total_Equity_Gross_Minority_Interest,
+                base=df_bs.columns('Total_Equity_Gross_Minority_Interest'),
             ),
             go.Bar(
                 name="Net Asset",
                 x=labels,
-                y=Total_Equity_Gross_Minority_Interest,
+                y=df_bs.columns('Total_Equity_Gross_Minority_Interest'),
                 offsetgroup=1,
             ),
         ],
