@@ -165,7 +165,7 @@ with col1:
         )
     }
     # データフレームを表示
-    st.dataframe(df_output.head(1), column_config=column_config)
+    st.dataframe(data, column_config=column_config)
 
     
     st.divider()
