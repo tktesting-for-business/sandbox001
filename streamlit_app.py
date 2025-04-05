@@ -19,32 +19,6 @@ with st.sidebar:
     st.radio("fruits",["apple","orange","melon"])
 
 
-
-from streamlit.column_config import BarChartColumn
- 
-# データフレームを作成
-data = {
-    "Product": ["A", "B", "C"],
-    "Sales": [[250, 400, 150, 200, 220, 430, 230, 300, 110, 150, 200,],
-              [220, 320, 260, 150, 320, 280, 510, 300, 130, 160, 220,],
-              [120, 450, 300, 110, 300, 470, 320, 300, 120, 180, 230,]]
-}
-df = pd.DataFrame(data)
- 
-# BarChartColumnで列をカスタマイズ
-cfg = {
-    "Sales": BarChartColumn(
-        label="売上 (単位: 千円)",
-        help="各製品の売上を棒グラフで表示します。",
-        y_min=0,  # Y軸の最小値
-        y_max=500  # Y軸の最大値
-    )
-}
- 
-# データフレームを表示
-st.dataframe(df, column_config=cfg)
-
-
 ########################################################
 import yfinance as yf
 #from streamlit.column_config import BarChartColumn
