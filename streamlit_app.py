@@ -154,6 +154,8 @@ def financial_contents_view(ticker_symbol):
     st.subheader(ticker_symbol + ": " + yf.Ticker(ticker_symbol).info["longName"])
     st.write("Industry: " + yf.Ticker(ticker_symbol).info["industry"])    
     st.write("Sector: " + yf.Ticker(ticker_symbol).info["sector"])
+    st.write("Full Time Employees: " + yf.Ticker(ticker_symbol).info["fullTimeEmployees"])
+    
     st.divider()
     # 損益計算書
     st.subheader("Income Statement (Bil. JPY)")
