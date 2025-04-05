@@ -72,9 +72,9 @@ fig1 = go.Figure(
         yaxis_title="JPY(単位:百万円)"
     )
 )
-plot(fig1)
+#plot(fig1)
 #fig1.show()
-
+st.plotly_chart(fig1)
 
 
 ########################################################
