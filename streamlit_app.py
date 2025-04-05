@@ -24,10 +24,7 @@ with st.sidebar:
     st.radio("fruits",["apple","orange","melon"])
     
 col1, col2 = st.columns([2, 2],border=True)
-with col1:
-    financial_contents_view("1925.T")
-with col2:
-    financial_contents_view("1928.T")
+
 
 # 貸借対照表
 #######################################
@@ -181,8 +178,13 @@ def financial_contents_view(ticker_symbol):
     st.write(df_output.T)
     balance_sheet_graph(ticker_symbol)
 
-
-
+# コンテンツ表示（2列）
+#######################################
+with col1:
+    financial_contents_view("1925.T")
+with col2:
+    financial_contents_view("1928.T")
+    
 # 配当金
 #dividends = ticker_info.dividends
 
