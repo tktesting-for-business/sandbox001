@@ -21,7 +21,7 @@ with st.sidebar:
     st.button("hello")
     st.text("hello world")
     st.divider()
-    st.radio("fruits",["apple","orange","melon"])
+    st.radio("Views",["Overview","Detail of income statement","Detail of cash flow"])
     
 col1, col2 = st.columns([2, 2],border=True)
 
@@ -65,12 +65,6 @@ def balance_sheet_graph(ticker_symbol):
     fig1 = go.Figure(
        # データの指定
        data=[
-            #go.Bar(
-            #    name="Total Assets",
-            #    x=labels,
-            #    y=Total_Assets,
-            #    offsetgroup=0,
-            #),
             go.Bar(
                 name="Current Assets",
                 x=labels,
