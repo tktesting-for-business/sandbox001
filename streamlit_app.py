@@ -177,9 +177,7 @@ with col1:
     df_output = income_stmt_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output)
-    #st.write(df_output.index.values) # 行名取得
-    #st.write(df_output.columns.values) # 列名取得
-    st.bar_chart(df_output.T.head(), stack=False)    
+    #st.bar_chart(df_output.T.head(), stack=False)    
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow (Bil. JPY)")
@@ -202,7 +200,7 @@ with col2:
     df_output = income_stmt_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output)
-    st.bar_chart(df_output.T.head(), stack=False)
+    #st.bar_chart(df_output.T.head(), stack=False)
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow (Bil. JPY)")
