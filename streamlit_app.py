@@ -83,7 +83,7 @@ Current_Liabilities = df_bs.loc['Current Liabilities'] #流動負債
 Total_Non_Current_Liabilities_Net_Minority_Interest = df_bs.loc['Total Non Current Liabilities Net Minority Interest']#非支配株主持分控除後固定負債合計
 Total_Equity_Gross_Minority_Interest = df_bs.loc['Total Equity Gross Minority Interest']#非支配株主持分を含む総資本
 labels = df_bs.columns.strftime('%Y年%m月%d日')
-np.array(assets)-np.array(liab)-np.array(equity)-np.array(minority)
+#np.array(assets)-np.array(liab)-np.array(equity)-np.array(minority)
 # グラフ描画
 fig1 = go.Figure(
    # データの指定
@@ -91,22 +91,21 @@ fig1 = go.Figure(
         go.Bar(
             name="総資産",
             x=labels,
-            y=assets,
+            y=Total_Assets,
             offsetgroup=0,
         ),
         go.Bar(
             name="負債",
             x=labels,
-            y=liab,
+            y=Current_Liabilities+Total_Non_Current_Liabilities_Net_Minority_Interest,
             offsetgroup=1,
-            base=Current_Liabilities+Total_Non_Current_Liabilities_Net_Minority_Interest,
+            base=Total_Non_Current_Liabilities_Net_Minority_Interest,
         ),
         go.Bar(
             name="純資産",
             x=labels,
-            y=equity,
+            y=Total_Equity_Gross_Minority_Interest,
             offsetgroup=1,
-            base=Total_Equity_Gross_Minority_Interest,
         ),
     ],
    # レイアウトの指定
