@@ -146,7 +146,7 @@ with col1:
     st.write(df_output.index.values) # 行名取得
     st.write(df_output.columns.values) # 列名取得
     st.bar_chart(df_output.T.head(), stack=False)
-    
+    st.write(df_output.head(1))
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow")
