@@ -34,59 +34,62 @@ Total_Non_Current_Assets = df_bs.loc['Total Non Current Assets'] #固定資産�
 Current_Liabilities = df_bs.loc['Current Liabilities'] #流動負債
 Total_Non_Current_Liabilities_Net_Minority_Interest = df_bs.loc['Total Non Current Liabilities Net Minority Interest']#非支配株主持分控除後固定負債合計
 Total_Equity_Gross_Minority_Interest = df_bs.loc['Total Equity Gross Minority Interest']#非支配株主持分を含む総資本
-labels = df_bs.columns.strftime('%Y-%m-%d')
-# グラフ描画
-fig1 = go.Figure(
-   # データの指定
-   data=[
-        #go.Bar(
-        #    name="Total Assets",
-        #    x=labels,
-        #    y=Total_Assets,
-        #    offsetgroup=0,
-        #),
-        go.Bar(
-            name="Current Assets",
-            x=labels,
-            y=Current_Assets,
-            base=Total_Non_Current_Assets,
-            offsetgroup=0,
-        ),
-        go.Bar(
-            name="Fixed Assets",
-            x=labels,
-            y=Total_Non_Current_Assets,
-            offsetgroup=0,
-        ),
-        go.Bar(
-            name="Current Liabilities",
-            x=labels,
-            y=Current_Liabilities,
-            offsetgroup=1,
-            base=Total_Non_Current_Liabilities_Net_Minority_Interest+Total_Equity_Gross_Minority_Interest,
-        ),
-       go.Bar(
-            name="Non Current Liabilitie",
-            x=labels,
-            y=Total_Non_Current_Liabilities_Net_Minority_Interest,
-            offsetgroup=1,
-            base=Total_Equity_Gross_Minority_Interest,
-        ),
-        go.Bar(
-            name="Net Asset",
-            x=labels,
-            y=Total_Equity_Gross_Minority_Interest,
-            offsetgroup=1,
-        ),
-    ],
-   # レイアウトの指定
-    layout=go.Layout(
-        title="Balance Sheet",
-        xaxis_title="Fiscal year end",
-        yaxis_title="JPY (Unit: Bil.)"
+
+def balance_sheet_graph(df_bs):
+    labels = df_bs.columns.strftime('%Y-%m-%d')
+    # グラフ描画
+    fig1 = go.Figure(
+       # データの指定
+       data=[
+            #go.Bar(
+            #    name="Total Assets",
+            #    x=labels,
+            #    y=Total_Assets,
+            #    offsetgroup=0,
+            #),
+            go.Bar(
+                name="Current Assets",
+                x=labels,
+                y=Current_Assets,
+                base=Total_Non_Current_Assets,
+                offsetgroup=0,
+            ),
+            go.Bar(
+                name="Fixed Assets",
+                x=labels,
+                y=Total_Non_Current_Assets,
+                offsetgroup=0,
+            ),
+            go.Bar(
+                name="Current Liabilities",
+                x=labels,
+                y=Current_Liabilities,
+                offsetgroup=1,
+                base=Total_Non_Current_Liabilities_Net_Minority_Interest+Total_Equity_Gross_Minority_Interest,
+            ),
+           go.Bar(
+                name="Non Current Liabilitie",
+                x=labels,
+                y=Total_Non_Current_Liabilities_Net_Minority_Interest,
+                offsetgroup=1,
+                base=Total_Equity_Gross_Minority_Interest,
+            ),
+            go.Bar(
+                name="Net Asset",
+                x=labels,
+                y=Total_Equity_Gross_Minority_Interest,
+                offsetgroup=1,
+            ),
+        ],
+       # レイアウトの指定
+        layout=go.Layout(
+            title="Balance Sheet",
+            xaxis_title="Fiscal year end",
+            yaxis_title="JPY (Unit: Bil.)"
+        )
     )
-)
-st.plotly_chart(fig1)
+    st.plotly_chart(fig1)
+balance_sheet_graph(df_bs)
 ########################################################
 
 # 大和ハウスの株価データを取得
