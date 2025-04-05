@@ -158,7 +158,7 @@ with col1:
     
     # BarChartColumnで列をカスタマイズ
     cfg = {
-        "Sales": BarChartColumn(
+        "values": BarChartColumn(
             label=" (単位: 円)",
             help="各項目の売上を棒グラフで表示します。",
             y_min=0,  # Y軸の最小値
