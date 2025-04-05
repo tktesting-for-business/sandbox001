@@ -152,7 +152,8 @@ with col1:
         "Sales": BarChartColumn(
             label="金額 (単位: 円)",
             help="各項目を棒グラフで表示します。",
-            y_min=0  # Y軸の最小値
+            y_min=0,  # Y軸の最小値
+            y_max=500  # Y軸の最大値
         )
     }
     # データフレームを表示
