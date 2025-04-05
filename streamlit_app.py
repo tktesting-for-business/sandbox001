@@ -70,7 +70,7 @@ fig1 = go.Figure(
         yaxis_title="JPY(単位:百万円)"
     )
 )
-#fig1.show()
+fig1.show()
 
 ticker_info = yf.Ticker("6702.T")
 df_bs=ticker_info.balance_sheet/1000000000 #貸借対照表
