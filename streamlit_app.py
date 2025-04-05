@@ -154,7 +154,7 @@ with col1:
     #}
     #df = pd.DataFrame(data)
 
-    st.write(df_output.index.toList())
+    st.write(df_output.index.[0])
     
     # BarChartColumnで列をカスタマイズ
     cfg = {
