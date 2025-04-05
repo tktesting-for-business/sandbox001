@@ -24,12 +24,41 @@ with st.sidebar:
 
 
 
+
 ########################################################
+# 大和ハウスの株価データを取得
 #ticker_symbol = "1925.T"
-#ticker_info = yf.Ticker(ticker_symbol)
-#df_bs=ticker_info.balance_sheet/1000000000 #貸借対照表
+#ticker_data = yf.Ticker(ticker_symbol)
 
+# 過去1週間のデータを取得
+#hist_data = ticker_data.history(period="1wk")
 
+# 取得したデータを表示
+#st.write(hist_data)
+
+# 貸借対照表
+#######################################
+def balance_sheet_outline(ticker_symbol):
+    ticker_info = yf.Ticker(ticker_symbol)
+    balance_sheet = ticker_info.balance_sheet/1000000000 #年単位（10億円単位）
+    #balance_sheet = ticker_info.quarterly_balance_sheet/1000000000 #4ヶ月単位（10億円単位）
+    balance_sheet.columns = balance_sheet.columns[::-1]
+
+    def balance_sheet_items(item):
+        if item in balance_sheet.index:
+            item_data = balance_sheet.loc[item]
+            return item_data
+    
+    Total_Assets =balance_sheet_items("Total Assets") #総資産
+    Current_Assets =balance_sheet_items("Current Assets") #流動資産
+    Total_Non_Current_Assets =balance_sheet_items("Total Non Current Assets") #固定資産合計
+    Current_Liabilities =balance_sheet_items("Current Liabilities") #流動負債
+    Total_Non_Current_Liabilities_Net_Minority_Interest =balance_sheet_items("Total Non Current Liabilities Net Minority Interest") #非支配株主持分控除後固定負債合計
+    Total_Equity_Gross_Minority_Interest =balance_sheet_items("Total Equity Gross Minority Interest") #非支配株主持分を含む総資本
+    return pd.concat([Total_Assets,Current_Assets,Total_Non_Current_Assets,Current_Liabilities,Total_Non_Current_Liabilities_Net_Minority_Interest,Total_Equity_Gross_Minority_Interest], axis=1) # axis=1 で列方向に結合
+
+# 貸借対照表グラフ
+#######################################
 def balance_sheet_graph(ticker_symbol):
     ticker_info = yf.Ticker(ticker_symbol)
     balance_sheet = ticker_info.balance_sheet/1000000000 #年単位（10億円単位）
@@ -94,43 +123,7 @@ def balance_sheet_graph(ticker_symbol):
         )
     )
     st.plotly_chart(fig1)
-
-########################################################
-
-# 大和ハウスの株価データを取得
-ticker_symbol = "1925.T"
-ticker_data = yf.Ticker(ticker_symbol)
-
-# 過去1週間のデータを取得
-#hist_data = ticker_data.history(period="1wk")
-
-# 取得したデータを表示
-#st.write(hist_data)
-
-ticker_info = yf.Ticker(ticker_symbol)
-
-# 貸借対照表
-#######################################
-def balance_sheet_outline(ticker_symbol):
-    ticker_info = yf.Ticker(ticker_symbol)
-    balance_sheet = ticker_info.balance_sheet/1000000000 #年単位（10億円単位）
-    #balance_sheet = ticker_info.quarterly_balance_sheet/1000000000 #4ヶ月単位（10億円単位）
-    balance_sheet.columns = balance_sheet.columns[::-1]
-
-    def balance_sheet_items(item):
-        if item in balance_sheet.index:
-            item_data = balance_sheet.loc[item]
-            return item_data
     
-    Total_Assets =balance_sheet_items("Total Assets") #総資産
-    Current_Assets =balance_sheet_items("Current Assets") #流動資産
-    Total_Non_Current_Assets =balance_sheet_items("Total Non Current Assets") #固定資産合計
-    Current_Liabilities =balance_sheet_items("Current Liabilities") #流動負債
-    Total_Non_Current_Liabilities_Net_Minority_Interest =balance_sheet_items("Total Non Current Liabilities Net Minority Interest") #非支配株主持分控除後固定負債合計
-    Total_Equity_Gross_Minority_Interest =balance_sheet_items("Total Equity Gross Minority Interest") #非支配株主持分を含む総資本
-    return pd.concat([Total_Assets,Current_Assets,Total_Non_Current_Assets,Current_Liabilities,Total_Non_Current_Liabilities_Net_Minority_Interest,Total_Equity_Gross_Minority_Interest], axis=1) # axis=1 で列方向に結合
-#######################################
-
 # 損益計算書
 #######################################
 def income_stmt_outline(ticker_symbol):
