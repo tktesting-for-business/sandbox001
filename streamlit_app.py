@@ -70,6 +70,7 @@ fig1 = go.Figure(
         yaxis_title="JPY(単位:百万円)"
     )
 )
+st.write(data)
 fig1.show()
 
 
