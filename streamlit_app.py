@@ -69,7 +69,7 @@ fig1 = go.Figure(
         yaxis_title="JPY(単位:十億円)"
     )
 )
-fig1.show()
+#fig1.show()
 
 ########################################################
 
@@ -96,8 +96,8 @@ def show_balance_sheet_item(item):
 #######################################
 def balance_sheet_outline(ticker_symbol):
     ticker_info = yf.Ticker(ticker_symbol)
-    balance_sheet = ticker_info.balance_sheet #年単位
-    #balance_sheet = ticker_info.quarterly_balance_sheet #4ヶ月単位
+    balance_sheet = ticker_info.balance_sheet/1000000000 #年単位（10億円単位）
+    #balance_sheet = ticker_info.quarterly_balance_sheet/1000000000 #4ヶ月単位（10億円単位）
     balance_sheet.columns = balance_sheet.columns[::-1]
 
     def balance_sheet_items(item):
