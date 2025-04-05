@@ -152,6 +152,7 @@ def Cash_Flow_outline(ticker_symbol):
 #######################################
 def financial_contents_view(ticker_symbol):
     st.subheader(ticker_symbol + ": " + yf.Ticker(ticker_symbol).info["longName"])
+    st.write("Industry: " + yf.Ticker(ticker_symbol).info["industry"])    
     st.write("Sector: " + yf.Ticker(ticker_symbol).info["sector"])
     st.divider()
     # 損益計算書
