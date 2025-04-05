@@ -22,6 +22,7 @@ with st.sidebar:
 
 ########################################################
 from plotly import graph_objs as go
+ticker_info = yf.Ticker("6702.T")
 df_bs=ticker_info.balance_sheet/1000000000 #貸借対照表
 assets = df_bs.loc['Total Assets']  #リストで格納
 liab = df_bs.loc['Total Liab']
