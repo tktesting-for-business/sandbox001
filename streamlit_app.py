@@ -31,7 +31,7 @@ with st.sidebar:
 
 
 def balance_sheet_graph(df_bs):
-    Total_Assets = df_bs.loc['Total Assets']  #総資産 #リストで格納
+    #Total_Assets = df_bs.loc['Total Assets']  #総資産 #リストで格納
     Current_Assets = df_bs.loc['Current Assets'] #流動資産
     Total_Non_Current_Assets = df_bs.loc['Total Non Current Assets'] #固定資産合計
     Current_Liabilities = df_bs.loc['Current Liabilities'] #流動負債
