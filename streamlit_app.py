@@ -11,7 +11,8 @@ from plotly.offline import plot
 
 #import sandbox_app
 
-
+# レイアウト
+#######################################
 st.set_page_config(layout="wide")
 st.title("Analyzing financial statements")
 st.write("This is a testing site with yfinance API")
@@ -21,20 +22,8 @@ with st.sidebar:
     st.text("hello world")
     st.divider()
     st.radio("fruits",["apple","orange","melon"])
-
-
-
-
-########################################################
-# 大和ハウスの株価データを取得
-#ticker_symbol = "1925.T"
-#ticker_data = yf.Ticker(ticker_symbol)
-
-# 過去1週間のデータを取得
-#hist_data = ticker_data.history(period="1wk")
-
-# 取得したデータを表示
-#st.write(hist_data)
+    
+col1, col2 = st.columns([2, 2],border=True)
 
 # 貸借対照表
 #######################################
@@ -119,7 +108,7 @@ def balance_sheet_graph(ticker_symbol):
         layout=go.Layout(
             #title="Balance Sheet",
             xaxis_title="Fiscal year end",
-            yaxis_title="JPY (Unit: Bil.)"
+            yaxis_title="JPY (Bil.)"
         )
     )
     st.plotly_chart(fig1)
@@ -167,7 +156,7 @@ def Cash_Flow_outline(ticker_symbol):
 
 
 
-col1, col2 = st.columns([2, 2],border=True)
+
 with col1:
     ticker_symbol = "1925.T"
     st.subheader(ticker_symbol + ": " + yf.Ticker(ticker_symbol).info["longName"])
