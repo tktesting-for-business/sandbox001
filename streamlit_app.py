@@ -40,10 +40,23 @@ labels = df_bs.columns.strftime('%Y年%m月%d日')
 fig1 = go.Figure(
    # データの指定
    data=[
+        #go.Bar(
+        #    name="総資産",
+        #    x=labels,
+        #    y=Total_Assets,
+        #    offsetgroup=0,
+        #),
         go.Bar(
-            name="総資産",
+            name="流動資産",
             x=labels,
-            y=Total_Assets,
+            y=Current_Assets,
+            base=Total_Non_Current_Assets,
+            offsetgroup=0,
+        ),
+        go.Bar(
+            name="固定資産",
+            x=labels,
+            y=Total_Non_Current_Assets,
             offsetgroup=0,
         ),
         go.Bar(
