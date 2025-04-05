@@ -195,7 +195,7 @@ with col1:
     st.write(df_output.T)
     st.write(df_output.index)
     st.write(df_output.columns)
-    #balance_sheet_graph(df_output.T)
+    balance_sheet_graph(df_output)
 
 with col2:
     ticker_symbol = "1928.T"
