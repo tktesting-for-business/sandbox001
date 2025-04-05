@@ -193,7 +193,9 @@ with col1:
     st.subheader("Balance Sheet (Bil. JPY)")
     df_output = balance_sheet_outline(ticker_symbol)
     st.write(df_output.T)
-    balance_sheet_graph(df_output.T)
+    st.write(df_output.index)
+    st.write(df_output.columns)
+    #balance_sheet_graph(df_output.T)
 
 with col2:
     ticker_symbol = "1928.T"
