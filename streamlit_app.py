@@ -94,7 +94,7 @@ def balance_sheet_graph(ticker_symbol):
         )
     )
     st.plotly_chart(fig1)
-balance_sheet_graph(ticker_symbol)
+#balance_sheet_graph(ticker_symbol)
 ########################################################
 
 # 大和ハウスの株価データを取得
@@ -200,7 +200,7 @@ with col1:
     st.write(df_output.T)
     st.write(df_output.index)
     st.write(df_output.columns)
-    #balance_sheet_graph(ticker_symbol)
+    balance_sheet_graph(ticker_symbol)
 
 with col2:
     ticker_symbol = "1928.T"
