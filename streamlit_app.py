@@ -149,8 +149,8 @@ with col1:
     ### test ###
     # データフレームを作成
     data = {
-        "date": [df_output.iat[1, 1]],
-        "Total Revenue": [df_output['Total Revenue'].head(1)]
+        "date": [df_output.index(1)],
+        "Total Revenue": [df_output.at[df_output.index(1).value,'Total Revenue']]
     }
 
     df = pd.DataFrame(data)
@@ -158,7 +158,7 @@ with col1:
     # BarChartColumnで列をカスタマイズ
     column_config = {
         "Sales": BarChartColumn(
-            label="売上 (単位: 円)",
+            label=" (単位: 円)",
             help="各項目の売上を棒グラフで表示します。",
             y_min=0,  # Y軸の最小値
             y_max=1000000000  # Y軸の最大値
