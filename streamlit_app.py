@@ -180,10 +180,15 @@ def financial_contents_view(ticker_symbol):
 
 # コンテンツ表示（2列）
 #######################################
+#"1925.T"#大和ハウス
+#"1928.T"#積水ハウス
+#"2685.T"#アダストリア
+#"8016.T"#オンワード
+
 with col1:
-    financial_contents_view("1925.T")
+    financial_contents_view("2685.T")
 with col2:
-    financial_contents_view("1928.T")
+    financial_contents_view("8016.T")
     
 # 配当金
 #dividends = ticker_info.dividends
