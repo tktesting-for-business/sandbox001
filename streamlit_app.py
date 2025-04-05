@@ -149,8 +149,8 @@ with col1:
     ### test ###
     # データフレームを作成
     data = {
-        "date": [df_output.index(1)],
-        "Total Revenue": [df_output.at[df_output.index(1).value,'Total Revenue']]
+        "date": [df_output.iat[0, 1]],
+        "Total Revenue": [df_output.at[df_output.index.values(1),'Total Revenue']]
     }
 
     df = pd.DataFrame(data)
