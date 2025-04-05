@@ -34,46 +34,46 @@ Total_Non_Current_Assets = df_bs.loc['Total Non Current Assets'] #固定資産�
 Current_Liabilities = df_bs.loc['Current Liabilities'] #流動負債
 Total_Non_Current_Liabilities_Net_Minority_Interest = df_bs.loc['Total Non Current Liabilities Net Minority Interest']#非支配株主持分控除後固定負債合計
 Total_Equity_Gross_Minority_Interest = df_bs.loc['Total Equity Gross Minority Interest']#非支配株主持分を含む総資本
-labels = df_bs.columns.strftime('%Y年%m月%d日')
+labels = df_bs.columns.strftime('%Y-%m-%d')
 # グラフ描画
 fig1 = go.Figure(
    # データの指定
    data=[
         #go.Bar(
-        #    name="総資産",
+        #    name="Total Assets",
         #    x=labels,
         #    y=Total_Assets,
         #    offsetgroup=0,
         #),
         go.Bar(
-            name="流動資産",
+            name="Current Assets",
             x=labels,
             y=Current_Assets,
             base=Total_Non_Current_Assets,
             offsetgroup=0,
         ),
         go.Bar(
-            name="固定資産",
+            name="Fixed Assets",
             x=labels,
             y=Total_Non_Current_Assets,
             offsetgroup=0,
         ),
         go.Bar(
-            name="流動負債",
+            name="Current Liabilities",
             x=labels,
             y=Current_Liabilities,
             offsetgroup=1,
             base=Total_Non_Current_Liabilities_Net_Minority_Interest+Total_Equity_Gross_Minority_Interest,
         ),
        go.Bar(
-            name="固定負債",
+            name="Non Current Liabilitie",
             x=labels,
             y=Total_Non_Current_Liabilities_Net_Minority_Interest,
             offsetgroup=1,
             base=Total_Equity_Gross_Minority_Interest,
         ),
         go.Bar(
-            name="純資産",
+            name="Net Asset",
             x=labels,
             y=Total_Equity_Gross_Minority_Interest,
             offsetgroup=1,
@@ -81,9 +81,9 @@ fig1 = go.Figure(
     ],
    # レイアウトの指定
     layout=go.Layout(
-        title=ticker_symbol + " 貸借対照表(BS)",
-        xaxis_title="決算期",
-        yaxis_title="JPY(単位:十億円)"
+        title="Balance Sheet",
+        xaxis_title="Fiscal year end",
+        yaxis_title="JPY (Unit: Bil.)"
     )
 )
 st.plotly_chart(fig1)
