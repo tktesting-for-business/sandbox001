@@ -99,7 +99,7 @@ fig1 = go.Figure(
             x=labels,
             y=Current_Liabilities,
             offsetgroup=1,
-            base=Total_Non_Current_Liabilities_Net_Minority_Interest,
+            base=Total_Non_Current_Liabilities_Net_Minority_Interest+Total_Equity_Gross_Minority_Interest,
         ),
        go.Bar(
             name="固定負債",
