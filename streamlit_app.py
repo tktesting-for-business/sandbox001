@@ -154,7 +154,7 @@ with col1:
     }
     df = pd.DataFrame(data)
 
-    #st.write(df_output.index[0])
+    st.write(df)
     
     # BarChartColumnで列をカスタマイズ
     cfg = {
@@ -166,7 +166,7 @@ with col1:
         )
     }
     # データフレームを表示
-    st.dataframe(df, column_config=cfg)
+    #st.dataframe(df, column_config=cfg)
 
     
     st.divider()
