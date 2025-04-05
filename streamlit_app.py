@@ -41,7 +41,7 @@ def balance_sheet_graph(ticker_symbol):
     Current_Liabilities = balance_sheet.loc['Current Liabilities'] #流動負債
     Total_Non_Current_Liabilities_Net_Minority_Interest = balance_sheet.loc['Total Non Current Liabilities Net Minority Interest']#非支配株主持分控除後固定負債合計
     Total_Equity_Gross_Minority_Interest = balance_sheet.loc['Total Equity Gross Minority Interest']#非支配株主持分を含む総資本
-    labels = balance_sheet.index.strftime('%Y-%m-%d')
+    labels = balance_sheet.columns.strftime('%Y-%m-%d')
     # グラフ描画
     fig1 = go.Figure(
        # データの指定
