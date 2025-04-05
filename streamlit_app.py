@@ -148,13 +148,13 @@ with col1:
     st.bar_chart(df_output.T.head(), stack=False)
     ### test ###
     # データフレームを作成
-    #data = {
-    #    "date": [df_output.iat[0, 1]],
-    #    "Total Revenue": [df_output.at[df_output.iat[0, 1],'Total Revenue']]
-    #}
-    #df = pd.DataFrame(data)
+    data = {
+        "date": [df_output.index[0]],
+        "Total Revenue": [df_output.index[0],'Total Revenue']]
+    }
+    df = pd.DataFrame(data)
 
-    st.write(df_output.index[0])
+    #st.write(df_output.index[0])
     
     # BarChartColumnで列をカスタマイズ
     cfg = {
@@ -166,7 +166,7 @@ with col1:
         )
     }
     # データフレームを表示
-    #st.dataframe(df, column_config=cfg)
+    st.dataframe(df, column_config=cfg)
 
     
     st.divider()
