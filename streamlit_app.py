@@ -33,7 +33,7 @@ def balance_sheet_outline(ticker_symbol):
     balance_sheet = ticker_info.balance_sheet/1000000000 #年単位（10億円単位）
     #balance_sheet = ticker_info.quarterly_balance_sheet/1000000000 #4ヶ月単位（10億円単位）
     balance_sheet.columns = balance_sheet.columns[::-1]
-    #balance_sheet.columns = balance_sheet.columns.strftime('%Y-%m-%d')
+    balance_sheet.columns = balance_sheet.columns.strftime('%Y年%m月%d日')
     
     def balance_sheet_items(item):
         if item in balance_sheet.index:
