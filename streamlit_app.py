@@ -152,13 +152,10 @@ def Cash_Flow_outline(ticker_symbol):
     Free_CF =Cash_Flow_outline_items("Free Cash Flow")
     Financing_CF =Cash_Flow_outline_items("Financing Cash Flow")
     return pd.concat([Operating_CF, Investing_CF, Free_CF, Financing_CF], axis=1) # axis=1 で列方向に結合
+
+# Financial Contents View
 #######################################
-
-
-
-
-with col1:
-    ticker_symbol = "1925.T"
+def financial_contents_view(ticker_symbol):
     st.subheader(ticker_symbol + ": " + yf.Ticker(ticker_symbol).info["longName"])
     st.divider()
     # 損益計算書
@@ -180,6 +177,10 @@ with col1:
     st.write(df_output.T)
     balance_sheet_graph(ticker_symbol)
 
+
+with col1:
+    financial_contents_view("1925.T")
+    st.write("test")
 with col2:
     ticker_symbol = "1928.T"
     st.subheader(ticker_symbol + ": " + yf.Ticker(ticker_symbol).info["longName"])
