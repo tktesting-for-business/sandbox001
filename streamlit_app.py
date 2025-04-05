@@ -28,14 +28,15 @@ with st.sidebar:
 #ticker_symbol = "1925.T"
 #ticker_info = yf.Ticker(ticker_symbol)
 #df_bs=ticker_info.balance_sheet/1000000000 #貸借対照表
-#Total_Assets = df_bs.loc['Total Assets']  #総資産 #リストで格納
-#Current_Assets = df_bs.loc['Current Assets'] #流動資産
-#Total_Non_Current_Assets = df_bs.loc['Total Non Current Assets'] #固定資産合計
-#Current_Liabilities = df_bs.loc['Current Liabilities'] #流動負債
-#Total_Non_Current_Liabilities_Net_Minority_Interest = df_bs.loc['Total Non Current Liabilities Net Minority Interest']#非支配株主持分控除後固定負債合計
-#Total_Equity_Gross_Minority_Interest = df_bs.loc['Total Equity Gross Minority Interest']#非支配株主持分を含む総資本
+
 
 def balance_sheet_graph(df_bs):
+    Total_Assets = df_bs.loc['Total Assets']  #総資産 #リストで格納
+    Current_Assets = df_bs.loc['Current Assets'] #流動資産
+    Total_Non_Current_Assets = df_bs.loc['Total Non Current Assets'] #固定資産合計
+    Current_Liabilities = df_bs.loc['Current Liabilities'] #流動負債
+    Total_Non_Current_Liabilities_Net_Minority_Interest = df_bs.loc['Total Non Current Liabilities Net Minority Interest']#非支配株主持分控除後固定負債合計
+    Total_Equity_Gross_Minority_Interest = df_bs.loc['Total Equity Gross Minority Interest']#非支配株主持分を含む総資本
     labels = df_bs.index.strftime('%Y-%m-%d')
     # グラフ描画
     fig1 = go.Figure(
@@ -50,34 +51,34 @@ def balance_sheet_graph(df_bs):
             go.Bar(
                 name="Current Assets",
                 x=labels,
-                y=df_bs.columns('Current Assets'),
-                base=df_bs.columns('Total_Non_Current_Assets'),
+                y=Current Assets,
+                base=Total_Non_Current_Assets,
                 offsetgroup=0,
             ),
             go.Bar(
                 name="Fixed Assets",
                 x=labels,
-                y=df_bs.columns('Total_Non_Current_Assets'),
+                y=Total_Non_Current_Assets,
                 offsetgroup=0,
             ),
             go.Bar(
                 name="Current Liabilities",
                 x=labels,
-                y=df_bs.columns('Current_Liabilities'),
+                y=Current_Liabilities,
                 offsetgroup=1,
-                base=df_bs.columns('Total_Non_Current_Liabilities_Net_Minority_Interest')+df_bs.columns('Total_Equity_Gross_Minority_Interest'),
+                base=Total_Non_Current_Liabilities_Net_Minority_Interest+Total_Equity_Gross_Minority_Interest,
             ),
            go.Bar(
                 name="Non Current Liabilitie",
                 x=labels,
-                y=df_bs.columns('Total_Non_Current_Liabilities_Net_Minority_Interest'),
+                y=Total_Non_Current_Liabilities_Net_Minority_Interest,
                 offsetgroup=1,
-                base=df_bs.columns('Total_Equity_Gross_Minority_Interest'),
+                base=Total_Equity_Gross_Minority_Interest,
             ),
             go.Bar(
                 name="Net Asset",
                 x=labels,
-                y=df_bs.columns('Total_Equity_Gross_Minority_Interest'),
+                y=Total_Equity_Gross_Minority_Interest,
                 offsetgroup=1,
             ),
         ],
