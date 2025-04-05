@@ -118,8 +118,8 @@ def balance_sheet_outline(ticker_symbol):
 #######################################
 def income_stmt_outline(ticker_symbol):
     ticker_info = yf.Ticker(ticker_symbol)
-    income_stmt = ticker_info.income_stmt #年単位
-    #income_stmt = ticker_info.quarterly_income_stmt #4ヶ月単位
+    income_stmt = ticker_info.income_stmt/1000000000 #年単位（10億円単位）
+    #income_stmt = ticker_info.quarterly_income_stmt/1000000000 #4ヶ月単位（10億円単位）
     income_stmt.columns = income_stmt.columns[::-1]
 
     def income_stmt_items(item):
@@ -139,8 +139,8 @@ def income_stmt_outline(ticker_symbol):
 #######################################
 def Cash_Flow_outline(ticker_symbol):
     ticker_info = yf.Ticker(ticker_symbol)
-    Cash_Flow = ticker_info.cash_flow #年単位
-    #Cash_Flow = ticker_info.quarterly_cash_flow #4ヶ月単位
+    Cash_Flow = ticker_info.cash_flow/1000000000 #年単位（10億円単位）
+    #Cash_Flow = ticker_info.quarterly_cash_flow/1000000000 #4ヶ月単位（10億円単位）
     Cash_Flow.columns = Cash_Flow.columns[::-1]
 
     def Cash_Flow_outline_items(item):
@@ -163,7 +163,7 @@ with col1:
     st.subheader(ticker_symbol + ": " + yf.Ticker(ticker_symbol).info["longName"])
     st.divider()
     # 損益計算書
-    st.subheader("Income Statement")
+    st.subheader("Income Statement (Bil. JPY)")
     df_output = income_stmt_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output)
@@ -172,13 +172,13 @@ with col1:
     st.bar_chart(df_output.T.head(), stack=False)    
     st.divider()
     # キャッシュフロー
-    st.subheader("Cash Flow")
+    st.subheader("Cash Flow (Bil. JPY)")
     df_output = Cash_Flow_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output) 
     st.divider()
     # 貸借対照表
-    st.subheader("Balance Sheet")
+    st.subheader("Balance Sheet (Bil. JPY)")
     df_output = balance_sheet_outline(ticker_symbol)
     st.write(df_output.T)
 
@@ -187,20 +187,20 @@ with col2:
     st.subheader(ticker_symbol + ": " + yf.Ticker(ticker_symbol).info["longName"])
     st.divider()
     # 損益計算書
-    st.subheader("Income Statement")
+    st.subheader("Income Statement (Bil. JPY)")
     df_output = income_stmt_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output)
     st.bar_chart(df_output.T.head(), stack=False)
     st.divider()
     # キャッシュフロー
-    st.subheader("Cash Flow")
+    st.subheader("Cash Flow (Bil. JPY)")
     df_output = Cash_Flow_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output) 
     st.divider()
     # 貸借対照表
-    st.subheader("Balance Sheet")
+    st.subheader("Balance Sheet (Bil. JPY)")
     df_output = balance_sheet_outline(ticker_symbol)
     st.write(df_output.T)
 
