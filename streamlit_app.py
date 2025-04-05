@@ -10,6 +10,7 @@ import yfinance as yf
 #import sandbox_app
 
 from plotly import graph_objs as go
+from plotly.offline import plot
 # 朝日新聞社のBSの数値をサンプルのデータとして利用
 # (子会社の朝日放送HDもしくはテレビ朝日HDが適時開示に「親会社の決算」を発表している)
 data = {
@@ -58,7 +59,8 @@ fig1 = go.Figure(
         yaxis_title="JPY(単位:百万円)"
     )
 )
-fig1.show()
+plot(fig1)
+#fig1.show()
 
 
 st.set_page_config(layout="wide")
