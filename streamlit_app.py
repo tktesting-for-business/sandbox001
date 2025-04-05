@@ -42,6 +42,26 @@ def show_balance_sheet_item(item):
         st.write(item_data)
 
 #show_balance_sheet_item("Working Capital")
+#######################################
+def balance_sheet_outline(ticker_symbol):
+    ticker_info = yf.Ticker(ticker_symbol)
+    balance_sheet = ticker_info.balance_sheet #年単位
+    #balance_sheet = ticker_info.quarterly_balance_sheet #4ヶ月単位
+    balance_sheet.columns = balance_sheet.columns[::-1]
+
+    def balance_sheet_items(item):
+        if item in balance_sheet.index:
+            item_data = balance_sheet.loc[item]
+            return item_data
+    
+    Total_Assets =balance_sheet_items("Total Assets") #総資産
+    Current_Assets =balance_sheet_items("Current Assets") #流動資産
+    Total_Non_Current_Assets =balance_sheet_items("Total Non Current Assets") #固定資産合計
+    Current_Liabilities =balance_sheet_items("Current Liabilities") #流動負債
+    Total_Non_Current_Liabilities_Net_Minority_Interest =balance_sheet_items("Total Non Current Liabilities Net Minority Interest") #非支配株主持分控除後固定負債合計
+    Total_Equity_Gross_Minority_Interest =balance_sheet_items("Total Equity Gross Minority Interest") #非支配株主持分を含む総資本
+    return pd.concat([Total_Assets,Current_Assets,Total_Non_Current_Assets,Current_Liabilities,Total_Non_Current_Liabilities_Net_Minority_Interest,Total_Equity_Gross_Minority_Interest], axis=1) # axis=1 で列方向に結合
+#######################################
 
 # 損益計算書
 #######################################
@@ -108,10 +128,8 @@ with col1:
     st.divider()
     # 貸借対照表
     st.subheader("Balance Sheet")
-    ticker_info = yf.Ticker(ticker_symbol)
-    balance_sheet = ticker_info.balance_sheet
-    balance_sheet.columns = balance_sheet.columns[::-1]
-    st.write(balance_sheet)
+    df_output = balance_sheet_outline(ticker_symbol)
+    st.write(df_output.T)
 
 with col2:
     ticker_symbol = "1928.T"
@@ -132,14 +150,8 @@ with col2:
     st.divider()
     # 貸借対照表
     st.subheader("Balance Sheet")
-    ticker_info = yf.Ticker(ticker_symbol)
-    balance_sheet = ticker_info.balance_sheet
-    balance_sheet.columns = balance_sheet.columns[::-1]
-    st.write(balance_sheet)
-
-
-# キャッシュフロー
-#cash_flow = ticker_info.cash_flow
+    df_output = balance_sheet_outline(ticker_symbol)
+    st.write(df_output.T)
 
 # 配当金
 #dividends = ticker_info.dividends
