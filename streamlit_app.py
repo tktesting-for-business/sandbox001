@@ -25,7 +25,7 @@ with st.sidebar:
 
 
 ########################################################
-ticker_symbol = "1925.T"
+#ticker_symbol = "1925.T"
 #ticker_info = yf.Ticker(ticker_symbol)
 #df_bs=ticker_info.balance_sheet/1000000000 #貸借対照表
 
@@ -88,13 +88,13 @@ def balance_sheet_graph(ticker_symbol):
         ],
        # レイアウトの指定
         layout=go.Layout(
-            title="Balance Sheet",
+            #title="Balance Sheet",
             xaxis_title="Fiscal year end",
             yaxis_title="JPY (Unit: Bil.)"
         )
     )
     st.plotly_chart(fig1)
-#balance_sheet_graph(ticker_symbol)
+
 ########################################################
 
 # 大和ハウスの株価データを取得
@@ -198,8 +198,6 @@ with col1:
     st.subheader("Balance Sheet (Bil. JPY)")
     df_output = balance_sheet_outline(ticker_symbol)
     st.write(df_output.T)
-    st.write(df_output.index)
-    st.write(df_output.columns)
     balance_sheet_graph(ticker_symbol)
 
 with col2:
@@ -223,6 +221,7 @@ with col2:
     st.subheader("Balance Sheet (Bil. JPY)")
     df_output = balance_sheet_outline(ticker_symbol)
     st.write(df_output.T)
+    balance_sheet_graph(ticker_symbol)
 
 # 配当金
 #dividends = ticker_info.dividends
