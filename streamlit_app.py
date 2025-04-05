@@ -143,10 +143,30 @@ with col1:
     df_output = income_stmt_outline(ticker_symbol)
     st.write(df_output.T)
     st.line_chart(df_output)
-    st.write(df_output.index.values) # 行名取得
-    st.write(df_output.columns.values) # 列名取得
+    #st.write(df_output.index.values) # 行名取得
+    #st.write(df_output.columns.values) # 列名取得
     st.bar_chart(df_output.T.head(), stack=False)
-    st.write(df_output.head(1))
+    ### test ###
+    # データフレームを作成
+    data = {
+        "date": [df_output.iat[1, 1]],
+        "Total Revenue": [[df_output.iat[1, 2,]]
+    }
+    df = pd.DataFrame(data)
+    
+    # BarChartColumnで列をカスタマイズ
+    column_config = {
+        "Sales": BarChartColumn(
+            label="売上 (単位: 円)",
+            help="各項目の売上を棒グラフで表示します。",
+            y_min=0,  # Y軸の最小値
+            y_max=1000000000  # Y軸の最大値
+        )
+    }
+    # データフレームを表示
+    st.dataframe(df_output.head(1), column_config=column_config)
+
+    
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow")
