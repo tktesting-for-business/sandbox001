@@ -26,8 +26,8 @@ with st.sidebar:
 col1, col2 = st.columns([2, 2],border=True)
 
 # 型宣言
-Total_Assets: any = "Data"
-Net_Income: any = "Data"
+global_Total_Assets: any = "Data"
+global_Net_Income: any = "Data"
 
 # 貸借対照表
 #######################################
@@ -43,6 +43,7 @@ def balance_sheet_outline(ticker_symbol):
             return item_data
     
     Total_Assets =balance_sheet_items("Total Assets") #総資産
+    global_Total_Assets = Total_Assets
     Current_Assets =balance_sheet_items("Current Assets") #流動資産
     Total_Non_Current_Assets =balance_sheet_items("Total Non Current Assets") #固定資産合計
     Current_Liabilities =balance_sheet_items("Current Liabilities") #流動負債
@@ -131,6 +132,7 @@ def income_stmt_outline(ticker_symbol):
     Operating_Income =income_stmt_items("Operating Income")
     Pretax_Income =income_stmt_items("Pretax Income")
     Net_Income =income_stmt_items("Net Income")
+    global_Net_Income = Net_Income
     return pd.concat([Total_Revenue, Gross_Profit,Operating_Income,Pretax_Income,Net_Income], axis=1) # axis=1 で列方向に結合
 #######################################
 
