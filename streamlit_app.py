@@ -26,8 +26,8 @@ with st.sidebar:
 col1, col2 = st.columns([2, 2],border=True)
 
 # 型宣言
-global_Total_Assets: any = "Data"
-global_Net_Income: any = "Data"
+global_Total_Assets: any = None
+global_Net_Income: any = None
 
 # 貸借対照表
 #######################################
