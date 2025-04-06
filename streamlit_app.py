@@ -178,7 +178,7 @@ def financial_contents_view(ticker_symbol):
     df_output = balance_sheet_outline(ticker_symbol)
     st.write(df_output.T)
     balance_sheet_graph(ticker_symbol)
-    st.write(df_output.T['Working_Capital'])
+    st.write(df_output.T.index)
 
 # コンテンツ表示（2列）
 #######################################
