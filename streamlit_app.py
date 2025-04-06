@@ -25,6 +25,9 @@ with st.sidebar:
     
 col1, col2 = st.columns([2, 2],border=True)
 
+# 型宣言
+Total_Assets: any = "Data"
+Net_Income: any = "Data"
 
 # 貸借対照表
 #######################################
@@ -109,8 +112,6 @@ def balance_sheet_graph(ticker_symbol):
     )
     st.plotly_chart(fig1)
 
-# Working Capital グラフ
-#######################################
 
 # 損益計算書
 #######################################
@@ -183,6 +184,10 @@ def financial_contents_view(ticker_symbol):
     balance_sheet_graph(ticker_symbol)
     st.write('Working Capital')
     st.line_chart(df_output.T.loc['Working Capital'])
+    st.divider()
+    # 比率分析
+    st.write('ROA：Net Income/Total Assets')
+    st.line_chart(Net_Income/Total_Assets)
 
 # コンテンツ表示（2列）
 #######################################
