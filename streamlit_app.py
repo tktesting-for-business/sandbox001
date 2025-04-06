@@ -164,6 +164,7 @@ def financial_contents_view(ticker_symbol):
     st.subheader("Income Statement (Bil. JPY)")
     df_output = income_stmt_outline(ticker_symbol)
     st.write(df_output.T)
+    df_output.index = df_output.index.strftime('%Y-%m-%d')
     st.line_chart(df_output)
     #st.bar_chart(df_output.T.head(), stack=False)    
     st.divider()
@@ -171,15 +172,16 @@ def financial_contents_view(ticker_symbol):
     st.subheader("Cash Flow (Bil. JPY)")
     df_output = Cash_Flow_outline(ticker_symbol)
     st.write(df_output.T)
+    df_output.index = df_output.index.strftime('%Y-%m-%d')    
     st.line_chart(df_output) 
     st.divider()
     # 貸借対照表
     st.subheader("Balance Sheet (Bil. JPY)")
     df_output = balance_sheet_outline(ticker_symbol)
+    df_output.index = df_output.index.strftime('%Y-%m-%d')
     st.write(df_output.T)
     balance_sheet_graph(ticker_symbol)
     st.write('Working Capital')
-    df_output.index = df_output.index.strftime('%Y-%m-%d')
     st.line_chart(df_output.T.loc['Working Capital'])
 
 # コンテンツ表示（2列）
