@@ -179,6 +179,7 @@ def financial_contents_view(ticker_symbol):
     st.write(df_output.T)
     balance_sheet_graph(ticker_symbol)
     st.write('Working Capital')
+    df_output.columns = df_output.columns.strftime('%Y-%m-%d')
     st.line_chart(df_output.T.loc['Working Capital'])
 
 # コンテンツ表示（2列）
