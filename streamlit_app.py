@@ -182,7 +182,7 @@ def financial_contents_view(ticker_symbol):
     st.line_chart(df_output_BS.T.loc['Working Capital'])
     st.divider()
     # 比率分析
-    st.subheader('ROA：Net Income/Total Assets')
+    st.subheader('ROA：Net Income/Total Assets (Bil. JPY)')
     st.line_chart(df_output_Income.T.loc['Net Income']/df_output_BS.T.loc['Total Assets'])
 
 # コンテンツ表示（2列）
