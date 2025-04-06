@@ -159,32 +159,31 @@ def financial_contents_view(ticker_symbol):
     st.divider()
     # 損益計算書
     st.subheader("Income Statement (Bil. JPY)")
-    df_output = income_stmt_outline(ticker_symbol)
-    st.write(df_output.T)
-    df_output.index = df_output.index.strftime('%Y-%m-%d')
-    st.line_chart(df_output)
-    #st.bar_chart(df_output.T.head(), stack=False) 
-    local_Net_Income = df_output.T.loc['Net Income']
+    df_output_Income = income_stmt_outline(ticker_symbol)
+    st.write(df_output_Income.T)
+    df_output_Income.index = df_output_Income.index.strftime('%Y-%m-%d')
+    st.line_chart(df_output_Income)
+    #st.bar_chart(df_output_Income.T.head(), stack=False) 
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow (Bil. JPY)")
-    df_output = Cash_Flow_outline(ticker_symbol)
-    st.write(df_output.T)
-    df_output.index = df_output.index.strftime('%Y-%m-%d')    
-    st.line_chart(df_output) 
+    df_output_CF = Cash_Flow_outline(ticker_symbol)
+    st.write(df_output_CF.T)
+    df_output_CF.index = df_output_CF.index.strftime('%Y-%m-%d')    
+    st.line_chart(df_output_CF) 
     st.divider()
     # 貸借対照表
     st.subheader("Balance Sheet (Bil. JPY)")
-    df_output = balance_sheet_outline(ticker_symbol)
-    df_output.index = df_output.index.strftime('%Y-%m-%d')
-    st.write(df_output.T)
+    df_output_BS = balance_sheet_outline(ticker_symbol)
+    df_output_BS.index = df_output_BS.index.strftime('%Y-%m-%d')
+    st.write(df_output_BS.T)
     balance_sheet_graph(ticker_symbol)
     st.write('Working Capital')
-    st.line_chart(df_output.T.loc['Working Capital'])
+    st.line_chart(df_output_BS.T.loc['Working Capital'])
     st.divider()
     # 比率分析
     st.write('ROA：Net Income/Total Assets')
-    st.write(local_Net_Income)
+    st.write(df_output_Income.T.loc['Net Income']/df_output_BS.T.loc['Total Assets'])
 
 # コンテンツ表示（2列）
 #######################################
