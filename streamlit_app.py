@@ -187,7 +187,7 @@ def financial_contents_view(ticker_symbol):
     st.divider()
     # 比率分析
     st.write('ROA：Net Income/Total Assets')
-    st.line_chart(Net_Income)
+    st.write(Net_Income)
 
 # コンテンツ表示（2列）
 #######################################
