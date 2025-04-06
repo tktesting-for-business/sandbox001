@@ -25,10 +25,6 @@ with st.sidebar:
     
 col1, col2 = st.columns([2, 2],border=True)
 
-# 型宣言
-global_Total_Assets: any = None
-global_Net_Income: any = None
-
 # 貸借対照表
 #######################################
 def balance_sheet_outline(ticker_symbol):
@@ -43,7 +39,6 @@ def balance_sheet_outline(ticker_symbol):
             return item_data
     
     Total_Assets =balance_sheet_items("Total Assets") #総資産
-    global_Total_Assets = Total_Assets
     Current_Assets =balance_sheet_items("Current Assets") #流動資産
     Total_Non_Current_Assets =balance_sheet_items("Total Non Current Assets") #固定資産合計
     Current_Liabilities =balance_sheet_items("Current Liabilities") #流動負債
@@ -132,7 +127,6 @@ def income_stmt_outline(ticker_symbol):
     Operating_Income =income_stmt_items("Operating Income")
     Pretax_Income =income_stmt_items("Pretax Income")
     Net_Income =income_stmt_items("Net Income")
-    global_Net_Income = Net_Income
     return pd.concat([Total_Revenue, Gross_Profit,Operating_Income,Pretax_Income,Net_Income], axis=1) # axis=1 で列方向に結合
 #######################################
 
@@ -169,7 +163,8 @@ def financial_contents_view(ticker_symbol):
     st.write(df_output.T)
     df_output.index = df_output.index.strftime('%Y-%m-%d')
     st.line_chart(df_output)
-    #st.bar_chart(df_output.T.head(), stack=False)    
+    #st.bar_chart(df_output.T.head(), stack=False) 
+    local_Net_Income = df_output.T.loc['Net Income']
     st.divider()
     # キャッシュフロー
     st.subheader("Cash Flow (Bil. JPY)")
@@ -189,7 +184,7 @@ def financial_contents_view(ticker_symbol):
     st.divider()
     # 比率分析
     st.write('ROA：Net Income/Total Assets')
-    st.write(global_Net_Income)
+    st.write(local_Net_Income)
 
 # コンテンツ表示（2列）
 #######################################
