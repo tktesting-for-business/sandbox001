@@ -45,7 +45,8 @@ def balance_sheet_outline(ticker_symbol):
     Current_Liabilities =balance_sheet_items("Current Liabilities") #流動負債
     Total_Non_Current_Liabilities_Net_Minority_Interest =balance_sheet_items("Total Non Current Liabilities Net Minority Interest") #非支配株主持分控除後固定負債合計
     Total_Equity_Gross_Minority_Interest =balance_sheet_items("Total Equity Gross Minority Interest") #非支配株主持分を含む総資本
-    return pd.concat([Total_Assets,Current_Assets,Total_Non_Current_Assets,Current_Liabilities,Total_Non_Current_Liabilities_Net_Minority_Interest,Total_Equity_Gross_Minority_Interest], axis=1) # axis=1 で列方向に結合
+    Working_Capital = balance_sheet_items("Working Capital") #Working Capital    
+    return pd.concat([Total_Assets,Current_Assets,Total_Non_Current_Assets,Current_Liabilities,Total_Non_Current_Liabilities_Net_Minority_Interest,Total_Equity_Gross_Minority_Interest,Working_Capital], axis=1) # axis=1 で列方向に結合
 
 # 貸借対照表グラフ
 #######################################
@@ -107,7 +108,10 @@ def balance_sheet_graph(ticker_symbol):
         )
     )
     st.plotly_chart(fig1)
-    
+
+# Working Capital グラフ
+#######################################
+
 # 損益計算書
 #######################################
 def income_stmt_outline(ticker_symbol):
@@ -174,6 +178,7 @@ def financial_contents_view(ticker_symbol):
     df_output = balance_sheet_outline(ticker_symbol)
     st.write(df_output.T)
     balance_sheet_graph(ticker_symbol)
+    st.write(df_output.T.index['Working_Capital'])
 
 # コンテンツ表示（2列）
 #######################################
