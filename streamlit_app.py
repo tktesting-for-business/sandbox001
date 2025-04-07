@@ -22,7 +22,15 @@ options = [
     '9719.T:SCSK',
     '6560.T:LTS',
     '6532.T:Baycurrent',
-    '3697.T:Shift'
+    '3697.T:Shift',
+    '4755.T:Rakuten',
+    '4005.T:Sumitomo Chemical',
+    '4204.T:Sekisui Chemical',
+    '7731:Nikon',
+    '1890.T:Toyo Construction',
+    '9432.T:NTT',  
+    'ARM:ARM',  
+    'GOOGL:Alphabet A'
 ]
 
 # レイアウト
