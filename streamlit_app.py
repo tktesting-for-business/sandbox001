@@ -11,11 +11,6 @@ from plotly.offline import plot
 
 #import sandbox_app
 
-options = st.multiselect(
-    'What are your favorite colors',
-    ['Green', 'Yellow', 'Red', 'Blue'],
-    default=['Yellow', 'Red'] # デフォルトの設定
-)
 
 # レイアウト
 #######################################
@@ -28,7 +23,18 @@ with st.sidebar:
     st.text("hello world")
     st.divider()
     st.radio("Views",["Overview","Detail of income statement","Detail of cash flow"])
-    
+
+
+options = st.multiselect(
+    'What are your favorite colors',
+    ['Green', 'Yellow', 'Red', 'Blue'],
+    default=['Yellow', 'Red'] # デフォルトの設定
+)
+#"1925.T"#大和ハウス
+#"1928.T"#積水ハウス
+#"2685.T"#アダストリア
+#"8016.T"#オンワード
+
 col1, col2 = st.columns([2, 2],border=True)
 
 # 貸借対照表
