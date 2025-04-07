@@ -37,12 +37,12 @@ choice = st.multiselect('企業を２つ選んでください',
 
 # ユーザーの選択に応じたメッセージを表示
 try:
-    st.write(f'あなたが選んだのは{"、".join(choice)}です。')
-    target = ':'
     if len(choice) > 0:
+        st.write(f'あなたが選んだのは{"、".join(choice)}です。')
+        target = ':'
         idx = choice[0].find(target)
-        r = choice[0][:idx] 
-        st.write(r)
+        choice[0] = choice[0][:idx] 
+        st.write(choice[0])
 except (TypeError) as e:
     st.write(e)
     
