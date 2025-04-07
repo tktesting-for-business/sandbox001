@@ -20,7 +20,7 @@ options = [
     '8016.T:Onward',
     '5578.T:AR advanced technology',
     '9719.T:SCSK',
-    '4739.T:CTC'
+    '6560.T:LTS'
 ]
 
 # レイアウト
