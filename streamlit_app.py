@@ -16,6 +16,7 @@ from plotly.offline import plot
 options = [
     '1925.T:Daiwa House',
     '1928.T:Sekisui House',
+    '1890.T:Toyo Construction',
     '2685.T:Adastria',
     '8016.T:Onward',
     '5578.T:AR advanced technology',
@@ -24,11 +25,13 @@ options = [
     '6532.T:Baycurrent',
     '3697.T:Shift',
     '4755.T:Rakuten',
+    '9432.T:NTT',  
     '4005.T:Sumitomo Chemical',
     '4204.T:Sekisui Chemical',
-    '7731:Nikon',
-    '1890.T:Toyo Construction',
-    '9432.T:NTT',  
+    '6301.T:Komatsu',
+    '7267.T:Honda',
+    '7731.T:Nikon',
+    'CCEP:Coca Cola Euro',
     'ARM:ARM',  
     'GOOGL:Alphabet A'
 ]
