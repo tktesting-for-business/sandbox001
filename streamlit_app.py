@@ -28,18 +28,15 @@ with st.sidebar:
     st.radio("Views",["Overview","Detail of income statement","Detail of cash flow"])
 
 
-# 複数選択ボックスを作成し、ユーザーの選択を取得
-choice = st.multiselect('企業を２つ選んでください',
+# 企業選択ボックスを作成し、ユーザーの選択を取得
+choice = st.multiselect('Choice 2 companies',
             options,
             options[:2],
             max_selections = 2,
-            placeholder="選んでください")
-
-# ユーザーの選択に応じたメッセージを表示
+            placeholder="Choice!")
 try:
+    target = ':'
     if len(choice) > 0:
-        st.write(f'あなたが選んだのは{"、".join(choice)}です。')
-        target = ':'
         idx = choice[0].find(target)
         choice[0] = choice[0][:idx] 
         st.write(choice[0])
@@ -214,11 +211,6 @@ def financial_contents_view(ticker_symbol):
 
 # コンテンツ表示（2列）
 #######################################
-#"1925.T"#大和ハウス
-#"1928.T"#積水ハウス
-#"2685.T"#アダストリア
-#"8016.T"#オンワード
-
 with col1:
         if len(choice) > 0:
             financial_contents_view(choice[0])
