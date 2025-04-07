@@ -36,7 +36,7 @@ choice = st.multiselect('企業を２つ選んでください',
             placeholder="選んでください")
 
 # ユーザーの選択に応じたメッセージを表示
-try
+try:
     st.write(f'あなたが選んだのは{"、".join(choice)}です。')
     target = ':'
     idx = choice[0].find(target)
