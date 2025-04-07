@@ -220,9 +220,11 @@ def financial_contents_view(ticker_symbol):
 #"8016.T"#オンワード
 
 with col1:
-    financial_contents_view("1925.T")
+        if len(choice) > 0:
+            financial_contents_view(choice[0])
 with col2:
-    financial_contents_view("1928.T")
+        if len(choice) > 1:
+            financial_contents_view(choice[1])
     
 # 配当金
 #dividends = ticker_info.dividends
