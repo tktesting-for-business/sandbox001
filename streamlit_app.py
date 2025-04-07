@@ -28,7 +28,8 @@ with st.sidebar:
 options = st.multiselect(
     'What are your favorite colors',
     ['Green', 'Yellow', 'Red', 'Blue'],
-    default=['Yellow', 'Red'] # デフォルトの設定
+    default=['Yellow', 'Red'], # デフォルトの設定
+    max_selections=2
 )
 #"1925.T"#大和ハウス
 #"1928.T"#積水ハウス
