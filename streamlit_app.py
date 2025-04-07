@@ -29,11 +29,11 @@ with st.sidebar:
 
 
 # 企業選択ボックスを作成し、ユーザーの選択を取得
-choice = st.multiselect('Choice 2 companies',
+choice = st.multiselect('Choose 2 companies',
             options,
             options[:2],
             max_selections = 2,
-            placeholder="Choice!")
+            placeholder="Choose !")
 try:
     target = ':'
     if len(choice) > 0:
