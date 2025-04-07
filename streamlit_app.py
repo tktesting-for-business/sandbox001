@@ -20,7 +20,9 @@ options = [
     '8016.T:Onward',
     '5578.T:AR advanced technology',
     '9719.T:SCSK',
-    '6560.T:LTS'
+    '6560.T:LTS',
+    '6532.T:Baycurrent',
+    '3697.T:Shift'
 ]
 
 # レイアウト
