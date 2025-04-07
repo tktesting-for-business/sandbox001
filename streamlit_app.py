@@ -45,7 +45,7 @@ try:
         st.write(choice[0])
     if len(choice) > 1:
         idx = choice[1].find(target)
-        choice[0] = choice[1][:idx] 
+        choice[1] = choice[1][:idx] 
         st.write(choice[1])
 except (TypeError) as e:
     st.write(e)
