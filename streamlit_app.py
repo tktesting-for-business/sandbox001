@@ -43,7 +43,7 @@ st.write(f'あなたが選んだのは{"、".join(choice)}です。')
 #"8016.T"#オンワード
 target = ':'
 idx = choice[0].find(target)
-r = s[:idx] 
+r = choice[0][:idx] 
 st.write(r)
 
 col1, col2 = st.columns([2, 2],border=True)
