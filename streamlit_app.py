@@ -41,7 +41,10 @@ st.write(f'あなたが選んだのは{"、".join(choice)}です。')
 #"1928.T"#積水ハウス
 #"2685.T"#アダストリア
 #"8016.T"#オンワード
-st.write(choice[0])
+target = ':'
+idx = choice[0].find(target)
+r = s[:idx] 
+st.write(r)
 
 col1, col2 = st.columns([2, 2],border=True)
 
