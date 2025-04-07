@@ -11,6 +11,9 @@ from plotly.offline import plot
 
 #import sandbox_app
 
+# 複数選択ボックスのオプションを定義
+#######################################
+options = ['1925.T:大和ハウス', '1928.T:積水ハウス', '2685.T:アダストリア','8016.T:オンワード']
 
 # レイアウト
 #######################################
@@ -25,9 +28,6 @@ with st.sidebar:
     st.radio("Views",["Overview","Detail of income statement","Detail of cash flow"])
 
 
-# 複数選択ボックスのオプションを定義
-options = ['1925.T:大和ハウス', '1928.T:積水ハウス', '2685.T:アダストリア','8016.T:オンワード']
-
 # 複数選択ボックスを作成し、ユーザーの選択を取得
 choice = st.multiselect('企業を２つ選んでください',
             options,
@@ -36,16 +36,15 @@ choice = st.multiselect('企業を２つ選んでください',
             placeholder="選んでください")
 
 # ユーザーの選択に応じたメッセージを表示
-st.write(f'あなたが選んだのは{"、".join(choice)}です。')
-#"1925.T"#大和ハウス
-#"1928.T"#積水ハウス
-#"2685.T"#アダストリア
-#"8016.T"#オンワード
-target = ':'
-idx = choice[0].find(target)
-r = choice[0][:idx] 
-st.write(r)
-
+try
+    st.write(f'あなたが選んだのは{"、".join(choice)}です。')
+    target = ':'
+    idx = choice[0].find(target)
+    r = choice[0][:idx] 
+    st.write(r)
+except (TypeError) as e:
+    st.write(e)
+    
 col1, col2 = st.columns([2, 2],border=True)
 
 # 貸借対照表
