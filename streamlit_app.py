@@ -13,7 +13,7 @@ from plotly.offline import plot
 
 # 複数選択ボックスのオプションを定義
 #######################################
-options = ['1925.T:Daiwa House', '1928.T:Sekisui House', '2685.T:アダストリア','8016.T:オンワード']
+options = ['1925.T:Daiwa House', '1928.T:Sekisui House', '2685.T:Adastria','8016.T:Onward']
 
 # レイアウト
 #######################################
