@@ -39,7 +39,7 @@ choice = st.multiselect('企業を２つ選んでください',
 try:
     st.write(f'あなたが選んだのは{"、".join(choice)}です。')
     target = ':'
-    if choice[0] is not None:
+    if len(choice) > 0:
         idx = choice[0].find(target)
         r = choice[0][:idx] 
         st.write(r)
