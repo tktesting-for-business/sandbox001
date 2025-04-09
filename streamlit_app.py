@@ -31,6 +31,7 @@ options = [
     '6301.T:Komatsu',
     '6971.T:Kyocera',
     '6981.T:Murata',
+    '6976.T:Taiyo Yuden',
     '7267.T:Honda',
     '7731.T:Nikon',
     'CCEP:Coca Cola Euro',
