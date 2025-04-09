@@ -29,6 +29,8 @@ options = [
     '4005.T:Sumitomo Chemical',
     '4204.T:Sekisui Chemical',
     '6301.T:Komatsu',
+    '6971.T:Kyocera',
+    '6981.T:Murata',
     '7267.T:Honda',
     '7731.T:Nikon',
     'CCEP:Coca Cola Euro',
