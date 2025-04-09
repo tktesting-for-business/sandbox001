@@ -29,6 +29,7 @@ options = [
     '4005.T:Sumitomo Chemical',
     '4204.T:Sekisui Chemical',
     '6301.T:Komatsu',
+    '6856.T:Horiba',
     '6971.T:Kyocera',
     '6981.T:Murata',
     '6976.T:Taiyo Yuden',
